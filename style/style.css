@@ -1,0 +1,99 @@
+body {
+  color: #5c5d61;
+}
+
+h1 {
+  font-family: "Libre Bodoni", serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin: 20px;
+}
+
+h2 {
+  font-family: "Libre Bodoni", serif;
+  font-weight: 100;
+  margin: 20px;
+}
+
+header {
+  color: #5c5d61;
+  border: 0px solid #5c5d61;
+  border-width: 0px 0px 0.2px 0px;
+  margin: 1px;
+  padding: 20px;
+}
+
+footer {
+  font-family: "Quicksand", sans-serif;
+  text-transform: uppercase;
+  color: #5c5d61;
+  border: 0px solid #5c5d61;
+  border-width: 0.2px 0px 0px 0px;
+  margin: 1px;
+  padding: 15px;
+}
+
+a {
+  font-family: "Quicksand", sans-serif;
+  color: #5c5d61;
+  text-decoration: none;
+}
+
+p {
+  font-family: "Quicksand", sans-serif;
+  color: black;
+  margin: 20px;
+}
+
+form {
+  font-family: "Quicksand", sans-serif;
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin: auto;
+  color: black;
+}
+
+legend {
+  font-family: "Libre Bodoni", serif;
+  font-size: 25px;
+  color: #5c5d61;
+}
+
+button {
+  text-transform: uppercase;
+  font-family: "Quicksand", sans-serif;
+  color: #5c5d61;
+  background-color: white;
+  border: 1px solid #5c5d61;
+  padding: 10px;
+  margin: 0px 20px 0px 0px;
+}
+
+#hilfe {
+  background-image: url(https://media.istockphoto.com/id/1434731337/de/foto/luftaufnahme-der-drohne-sonnenaufgang-%C3%BCber-wien-%C3%B6sterreich.jpg?s=1024x1024&w=is&k=20&c=ZrtY0GGHq-XlPSt-7-wfnCLnFxMrdZbe1ahCDVzGFjM=);
+  background-size: cover;
+  margin: 0px;
+  height: 300px;
+  font-weight: 700;
+  font-size: 50px;
+  color: rgb(60, 74, 87);
+  text-align: center;
+}
+
+#faq {
+  padding: 30px;
+  background-color: #e9e6da;
+}
+
+#impressum-main {
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+.button-text {
+  font-family: "Quicksand", sans-serif;
+}
+
+.footer-link {
+  font-family: "Quicksand", sans-serif;
+  margin: 0px 20px 0px 0px;
+}
