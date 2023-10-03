@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 body {
   color: #5c5d61;
 }
@@ -59,6 +65,19 @@ legend {
   color: #5c5d61;
 }
 
+label {
+  margin: 60px 0px 20px 0px;
+}
+
+input {
+  font-family: "Quicksand", sans-serif;
+  margin: 5px 0px 10px 0px;
+}
+
+textarea {
+  font-family: "Quicksand", sans-serif;
+}
+
 button {
   text-transform: uppercase;
   font-family: "Quicksand", sans-serif;
@@ -72,12 +91,16 @@ button {
 #hilfe {
   background-image: url(https://media.istockphoto.com/id/1434731337/de/foto/luftaufnahme-der-drohne-sonnenaufgang-%C3%BCber-wien-%C3%B6sterreich.jpg?s=1024x1024&w=is&k=20&c=ZrtY0GGHq-XlPSt-7-wfnCLnFxMrdZbe1ahCDVzGFjM=);
   background-size: cover;
-  margin: 0px;
+  background-position: center;
+  margin: 0;
   height: 300px;
   font-weight: 700;
   font-size: 50px;
-  color: rgb(60, 74, 87);
+  color: white;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #faq {
