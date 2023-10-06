@@ -1,91 +1,138 @@
+:root {
+  --primary-color: #f9f9f9;
+  --secondary-color: #5c5d61;
+  --tertiary-color: black;
+  --quartiary-color: #e9e6da;
+  --quintary-color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
   border: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: #5c5d61;
+  color: var(--secondary-color);
+  height: 100%;
 }
 
 h1 {
   font-family: "Libre Bodoni", serif;
   font-weight: 700;
-  font-size: 30px;
-  margin: 20px;
+  font-size: 80px;
+  margin: 10px 5px 10px 5px;
 }
 
 h2 {
   font-family: "Libre Bodoni", serif;
   font-weight: 100;
-  margin: 20px;
-}
-
-header {
-  color: #5c5d61;
-  border: 0px solid #5c5d61;
-  border-width: 0px 0px 0.2px 0px;
-  margin: 1px;
-  padding: 20px;
-}
-
-footer {
-  font-family: "Quicksand", sans-serif;
-  text-transform: uppercase;
-  color: #5c5d61;
-  border: 0px solid #5c5d61;
-  border-width: 0.2px 0px 0px 0px;
-  margin: 1px;
-  padding: 15px;
+  font-size: 35px;
+  margin: 5px 5px 15px 5px;
 }
 
 a {
   font-family: "Quicksand", sans-serif;
-  color: #5c5d61;
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
 p {
   font-family: "Quicksand", sans-serif;
+  font-size: 35px;
+  font-weight: 300;
   color: black;
-  margin: 20px;
-}
-
-form {
-  font-family: "Quicksand", sans-serif;
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin: auto;
-  color: black;
-}
-
-legend {
-  font-family: "Libre Bodoni", serif;
-  font-size: 25px;
-  color: #5c5d61;
-}
-
-label {
-  margin: 60px 0px 20px 0px;
-}
-
-input {
-  font-family: "Quicksand", sans-serif;
-  margin: 5px 0px 10px 0px;
-}
-
-textarea {
-  font-family: "Quicksand", sans-serif;
+  margin: 5px 0 20px 0;
 }
 
 button {
   text-transform: uppercase;
   font-family: "Quicksand", sans-serif;
-  color: #5c5d61;
-  background-color: white;
-  border: 1px solid #5c5d61;
+  background-color: var(--quintary-color);
+  border: 1px solid var(--secondary-color);
   padding: 10px;
-  margin: 0px 20px 0px 0px;
+  margin: 20px 20px 0px 0px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+header {
+  font-size: 40px;
+  color: var(--secondary-color);
+  border: 0px solid var(--secondary-color);
+  border-width: 0px 0px 0.2px 0px;
+  margin: 1px;
+  padding: 20px;
+  position: sticky;
+}
+
+footer {
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 0px solid var(--secondary-color);
+  border-width: 0.2px 0px 0px 0px;
+  margin: 1px;
+  padding: 15px;
+}
+
+form {
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
+  background-color: var(--primary-color);
+  padding: 15px;
+  color: black;
+}
+
+legend {
+  font-family: "Libre Bodoni", serif;
+  font-size: 55px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin: 20px 0 0 0;
+}
+
+label {
+  margin: 50px 0px 20px 0px;
+}
+
+input {
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
+  display: block;
+  margin: 5px 0px 20px 0px;
+}
+
+.checkbox {
+  display: inline;
+  font-size: 40px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+select {
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
+  color: var(--secondary-color);
+  margin: 5px 0px 20px 0px;
+  display: block;
+}
+
+textarea {
+  font-family: "Quicksand", sans-serif;
+  font-size: 35px;
+  color: var(--secondary-color);
+}
+
+.submit-button {
+  text-transform: uppercase;
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--quintary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 10px;
+  margin: 20px 20px 0px 0px;
+  font-size: 35px;
 }
 
 #hilfe {
@@ -95,23 +142,28 @@ button {
   margin: 0;
   height: 300px;
   font-weight: 700;
-  font-size: 50px;
-  color: white;
+  color: var(--quintary-color);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#faq {
-  padding: 30px;
-  background-color: #e9e6da;
-}
-
 #impressum-main {
-  background-color: #f9f9f9;
+  background-color: var(--primary-color);
   padding: 20px;
 }
+
+#hilfe-main {
+  background-color: var(--primary-color);
+  padding: 20px;
+}
+
+#FAQ-div {
+  padding: 40px 30px;
+  background-color: var(--quartiary-color);
+}
+
 .button-text {
   font-family: "Quicksand", sans-serif;
 }
@@ -119,4 +171,132 @@ button {
 .footer-link {
   font-family: "Quicksand", sans-serif;
   margin: 0px 20px 0px 0px;
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-weight: 200;
+    font-size: 150px;
+    margin: 5px 5px 20px 5px;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 50px;
+    margin: 5px 5px 20px 5px;
+  }
+
+  p {
+    font-size: 40px;
+  }
+
+  button {
+    padding: 20px;
+    margin: 20px 20px 0px 0px;
+    font-size: 30px;
+  }
+
+  header {
+    font-size: 60px;
+  }
+
+  footer {
+    font-size: 40px;
+  }
+
+  form {
+    font-size: 60px;
+  }
+
+  legend {
+    font-size: 80px;
+    margin: 20px 0px;
+  }
+
+  label {
+    margin: 50px 0px 20px 0px;
+  }
+
+  input {
+    font-size: 60px;
+    margin: 5px 0px 30px 0px;
+  }
+
+  .checkbox {
+    margin: 0 20px 0 0;
+    transform: scale(2.5, 2.5);
+  }
+
+  select {
+    font-size: 60px;
+    margin: 5px 0px 30px 0px;
+  }
+
+  textarea {
+    font-size: 60px;
+  }
+
+  .submit-button {
+    margin: 20px 20px 0px 0px;
+    padding: 20px;
+    font-size: 60px;
+  }
+
+  #impressum-main {
+    padding: 0 30px;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 920px) {
+  h1 {
+    font-weight: 200;
+    font-size: 150px;
+    margin: 5px 20px 20px 5px;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 80px;
+    padding: 60px 0 0 0;
+    margin: 5px 20px 20px 5px;
+  }
+
+  p {
+    font-size: 50px;
+  }
+
+  button {
+    padding: 20px;
+    font-size: 30px;
+  }
+
+  header {
+    font-size: 100px;
+    padding: 20px 50px;
+  }
+
+  footer {
+    font-size: 50px;
+  }
+
+  form {
+    padding: 50px;
+  }
+
+  legend {
+    font-size: 120px;
+    font-weight: 400;
+    margin: 30px 0;
+  }
+
+  .submit-button {
+    margin: 20px 20px 0px 0px;
+    padding: 20px;
+    font-size: 60px;
+  }
+
+  #impressum-main {
+    padding: 0 50px;
+  }
 }
