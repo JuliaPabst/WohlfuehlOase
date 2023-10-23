@@ -9,10 +9,47 @@
   </head>
   <body>
     <header>
-      <a href="index.html" class="footer-link">Home</a>
-      <button><a href="anmelden.html" class="button-text">Anmelden</a></button>
-      <button>
-        <a href="registrieren.html" class="button-text">Registrieren</a>
+    <nav class="navbar navbar-expand-lg no-margin container-fluid">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/index.php"; ?>"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/help.php"; ?>"
+                  >Hilfe</a
+                >
+              </li>
+              <li class="nav-item">
+                <button>
+                <a href="<?php echo "/DOCUMENT_ROOT/anmelden.php"; ?>" class="button-text">Anmelden</a>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button>
+                <a href="<?php echo "/DOCUMENT_ROOT/registrieren.php"; ?>" class="button-text"
+                    >Registrieren</a
+                  >
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       </button>
     </header>
     <main id="impressum-main">
@@ -58,8 +95,8 @@
       <p>Unser Anliegen: Tourismusinformation über die Region Wien</p>
     </main>
     <footer>
-      <a href="impressum.html" class="footer-link">Impressum</a>
-      <a href="help.html" class="footer-link">Help & FAQ</a>
+      <a href="impressum.php" class="footer-link">Impressum</a>
+      <a href="help.php" class="footer-link">Help & FAQ</a>
     </footer>
   </body>
 </html>
