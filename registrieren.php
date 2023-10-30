@@ -14,52 +14,7 @@
     <title>Registrieren</title>
   </head>
   <body>
-    <header>
-    <nav class="navbar navbar-expand-lg no-margin container-fluid">
-        <nav class="navbar navbar-expand-lg no-margin container-fluid">
-        <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/index.php"; ?>"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/help.php"; ?>"
-                  >Hilfe</a
-                >
-              </li>
-              <li class="nav-item">
-                <button>
-                <a href="<?php echo "/DOCUMENT_ROOT/anmelden.php"; ?>" class="button-text">Anmelden</a>
-                </button>
-              </li>
-              <li class="nav-item">
-                <button>
-                <a href="<?php echo "/DOCUMENT_ROOT/registrieren.php"; ?>" class="button-text"
-                    >Registrieren</a
-                  >
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <form>
+    <form action = "auswertung.php" method = "get" >
       <fieldset>
         <legend>Registrierung</legend>
         <div>
@@ -130,11 +85,11 @@
           />
         </div>
         <div>
-          <input type="checkbox" value="Newsletter" checked class="checkbox" />
+          <input type="checkbox" name="Newsletter" value="Newsletter" checked class="checkbox" />
           <label>Ich möchte mich zum Newletter anmelden!</label>
         </div>
         <div>
-          <input type="checkbox" value="AGB" class="checkbox" />
+          <input type="checkbox" name="AGB" value="AGB" class="checkbox" />
           <label
             >Ich habe die
             <a
@@ -147,10 +102,6 @@
         <button type="Submit" class="submit-button">Senden</button>
       </fieldset>
     </form>
-    <footer>
-      <a href="<?php echo "/DOCUMENT_ROOT/impressum.php"; ?>" class="footer-link">Impressum</a>
-      <a href="<?php echo "/DOCUMENT_ROOT/help.php"; ?>" class="footer-link">Help & FAQ</a>
-    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

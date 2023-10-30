@@ -11,60 +11,46 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/style.css" />
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg no-margin container-fluid">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-<nav class="navbar navbar-expand-lg no-margin container-fluid">
-        <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <div class="header_logo d-flex justify-content-center">
+            <a href="/DOCUMENT_ROOT/index.php?site=homepage">
+                <img src="/DOCUMENT_ROOT/pictures/puntelogo.svg" alt="Change to Wohlfühloase Logo">
+            </a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/index.php"; ?>"
-                  >Home</a
-                >
+                <a class="nav-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<?php echo "/DOCUMENT_ROOT/help.php"; ?>"
-                  >Hilfe</a
-                >
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Services
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
               </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <button>
-                <a href="<?php echo "/DOCUMENT_ROOT/anmelden.php"; ?>" class="button-text">Anmelden</a>
+                  <a href="/DOCUMENT_ROOT/index.php?site=anmelden" class="button-text">Anmelden</a>
                 </button>
               </li>
               <li class="nav-item">
-                <button>
-                <a href="<?php echo "/DOCUMENT_ROOT/registrieren.php"; ?>" class="button-text"
-                    >Registrieren</a
-                  >
+              <button>
+                  <a href="/DOCUMENT_ROOT/index.php?site=registrieren" class="button-text">Registrieren</a>
                 </button>
               </li>
             </ul>
@@ -73,80 +59,32 @@
       </nav>
     </header>
 
-    <div id="home-image">
-      <h1 id="home-heading">Wohlfühloase</h1>
-      <h2 id="home-heading-description">Wellness mitten in Wien</h2>
-    </div>
-    <div class="container-fluid">
-      <div class="row first-row">
-        <div class="col-md-8 px-0">
-          <img
-            src="/pictures/wellness/GRBR_Thermal-Spa_Helenabad_von-oben_3998b7d57f5b9d921cfe1e5273bfd011.jpg"
-            alt="swimming lady"
-            class="home-side-pictures"
-          />
-        </div>
-        <div class="col-md-4 text-feld">
-          <p>
-            Genießen Sie Ihren Urlaub in einem der luxuriösesten Wellness Hotels
-            Österreichs. Mitten in Wien können Sie bei uns Kultur und
-            Körpergefühl kombinieren.
-          </p>
-        </div>
-      </div>
-      <div class="row px-0">
-        <div class="col-md-4 px-0">
-          <h2>Suites</h2>
-          <p>
-            Egal ob in der Family Suite oder im Deluxe Verwöhn Zimmer. Bei uns
-            können finden Sie einen konfortablen Rückzugsort.
-          </p>
-        </div>
-        <div class="col-md-8 text-feld px-0">
-          <img
-            src="/pictures/suite duplex.jpg.webp"
-            alt="Suites"
-            class="home-side-pictures"
-          />
-        </div>
-      </div>
-      <div class="row second-row px-0">
-        <div class="col-md-8 px-0">
-          <img
-            src="/pictures/wellness/GRBR_Helenabad_Totale_3998b7d57f5b9d921cfe1e5273bfd011.jpg"
-            alt="Pool"
-            class="home-side-pictures"
-          />
-        </div>
-        <div class="col-md-4 text-feld">
-          <h2>Wellness</h2>
-          <p>
-            Entspannen Sie in unserer Saunalandschaft oder lassen Sie sich in
-            unserem Pool treiben.
-          </p>
-        </div>
-      </div>
-      <div class="row px-0">
-        <div class="col-md-4 px-0">
-          <h2>Kulinarik</h2>
-          <p>
-            In unserem Restaurant treffen internationale Gourmetküche mit
-            lokalen Traditionsspeisen zusammen.
-          </p>
-        </div>
-        <div class="col-md-8 text-feld px-0">
-          <img
-            src="/pictures/pexels-photo-2878745.jpeg"
-            alt="swimming lady"
-            class="home-side-pictures"
-          />
-        </div>
-      </div>
-    </div>
+ <?php
+  if($_GET['site'] == "homepage"){
+   include 'homepage.php';
+  }
+
+  if($_GET['site'] == "help"){
+    include 'help.php';
+   }
+
+  if($_GET['site'] == "anmelden"){
+    include 'anmelden.php';
+  }
+
+  if($_GET['site'] == "registrieren"){
+    include 'registrieren.php';
+  }
+
+  if($_GET['site'] == "impressum"){
+    include 'impressum.php';
+  }
+ 
+ ?>
 
     <footer>
-      <a href="impressum.php" class="footer-link">Impressum</a>
-      <a href="help.php" class="footer-link">Help & FAQ</a>
+      <a href="/DOCUMENT_ROOT/index.php?site=impressum" class="footer-link">Impressum</a>
+      <a href="/DOCUMENT_ROOT/index.php?site=help" class="footer-link">Help & FAQ</a>
     </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

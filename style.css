@@ -157,12 +157,17 @@ textarea {
 }
 
 #home-image {
-  background-image: url(/pictures/Palais©Palais-Coburg-Hotel-Residenz.jpg);
+  background-image: url("/DOCUMENT_ROOT/pictures/wellness/spa.jpg");
   background-color: rgba(190, 190, 190, 0.4);
   background-blend-mode: lighten;
   background-size: cover;
   background-position: center;
   padding: 80px;
+  margin-bottom: 50px;
+}
+
+#makewhite {
+  filter: grayscale(1) brightness(10);
 }
 
 .first-row {
