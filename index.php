@@ -11,7 +11,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/style.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet3.css" />
   </head>
   <body>
     <header>
@@ -19,7 +19,7 @@
         <div class="container-fluid">
           <div class="header_logo d-flex justify-content-center">
             <a href="/DOCUMENT_ROOT/index.php?site=homepage">
-                <img src="/DOCUMENT_ROOT/pictures/puntelogo.svg" alt="Change to Wohlfühloase Logo">
+                <img src="/DOCUMENT_ROOT/pictures/puntelogo.svg" alt="Change to Wohlfühloase Logo" id="navbar-image">
             </a>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,17 +28,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
+                <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle navigation-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Services
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item navigation-link" href="#">Action</a></li>
+                  <li><a class="dropdown-item navigation-link" href="#">Another action</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item navigation-link" href="#">Something else here</a></li>
                 </ul>
               </li>
             </ul>
