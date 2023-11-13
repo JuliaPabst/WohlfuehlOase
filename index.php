@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,72 +17,77 @@
     <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet3.css" />
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <div class="header_logo d-flex justify-content-center">
-            <a href="/DOCUMENT_ROOT/index.php?site=homepage">
-                <img src="/DOCUMENT_ROOT/pictures/puntelogo.svg" alt="Change to Wohlfühloase Logo" id="navbar-image">
-            </a>
-          </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle navigation-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Services
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item navigation-link" href="#">Action</a></li>
-                  <li><a class="dropdown-item navigation-link" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item navigation-link" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <button>
-                  <a href="/DOCUMENT_ROOT/index.php?site=anmelden" class="button-text">Anmelden</a>
-                </button>
-              </li>
-              <li class="nav-item">
-              <button>
-                  <a href="/DOCUMENT_ROOT/index.php?site=registrieren" class="button-text">Registrieren</a>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+   
 
  <?php
-  if($_GET['site'] == "homepage"){
-   include 'homepage.php';
+
+  if(isset($_POST["usernameLoggedIn"]) && isset($_POST["passwortLoggedIn"])){
+    $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
+    $_SESSION["passwortLoggedIn"] = $_POST["passwortLoggedIn"];
+  } 
+
+
+  if(isset($_POST["username"])){
+    $_SESSION["anrede"] = $_POST["anrede"];
+    $_SESSION["vorname"] = $_POST["vorname"];
+    $_SESSION["nachname"] = $_POST["nachname"];
+    $_SESSION["email"] = $_POST["email"];
+    $_SESSION["username"] = $_POST["username"];
+    $_SESSION["passwort1"] = $_POST["passwort1"];
+    $_SESSION["passwort2"] = $_POST["passwort2"];
+    $_SESSION["newsletter"] = $_POST["newsletter"];
+    $_SESSION["AGB"] = $_POST["AGB"];
+
+    $_SESSION["usernameLoggedIn"] = $_POST["username"];
+    $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
+  } 
+
+  if(isset($_POST["usernameLoggedIn"]) && isset($_POST["passwortLoggedIn"]) && isset($_POST["anrede"])){
+    $_SESSION["anrede"] = $_POST["anrede"];
+    $_SESSION["vorname"] = $_POST["vorname"];
+    $_SESSION["nachname"] = $_POST["nachname"];
+    $_SESSION["email"] = $_POST["email"];
+    $_SESSION["newsletter"] = $_POST["newsletter"];
+    $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
+    $_SESSION["passwortLoggedIn"] = $_POST["passwortLoggedIn"];
+  } 
+
+  if(isset($_POST["logOut"])){
+    unset($_SESSION["usernameLoggedIn"]);
   }
 
-  if($_GET['site'] == "help"){
-    include 'help.php';
+  if(!isset($_SESSION["usernameLoggedIn"]) && $_SESSION["passwortLoggedIn"]="1234"){
+    include 'navbar_loggedOut.php';
+  }
+
+  if(isset($_SESSION["usernameLoggedIn"])){
+    include 'navbar_loggedIn.php';
+  } 
+
+
+  if($_GET['site'] == "homepage"){
+    include 'homepage.php';
+   }
+ 
+   if($_GET['site'] == "help"){
+     include 'help.php';
+    }
+ 
+   if($_GET['site'] == "anmelden"){
+     include 'anmelden.php';
+   }
+ 
+   if($_GET['site'] == "registrieren"){
+     include 'registrieren.php';
    }
 
-  if($_GET['site'] == "anmelden"){
-    include 'anmelden.php';
-  }
-
-  if($_GET['site'] == "registrieren"){
-    include 'registrieren.php';
-  }
-
-  if($_GET['site'] == "impressum"){
-    include 'impressum.php';
+   if($_GET['site'] == "profil"){
+    include 'profil.php';
   }
  
+   if($_GET['site'] == "impressum"){
+     include 'impressum.php';
+   }
  ?>
 
     <footer>

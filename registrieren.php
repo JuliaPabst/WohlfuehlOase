@@ -1,9 +1,9 @@
-<form action = "auswertung.php" method = "get" class="registrierung-wrapping">
+<form action = "index.php?site=homepage" method = "post" class="registrierung-wrapping">
   <fieldset>
     <legend>Registrierung</legend>
     <div>
-      <label for="Anrede">Anrede:</label>
-      <select name="Anrede" id="Anrede" required>
+      <label for="anrede">Anrede:</label>
+      <select name="anrede" required>
         <option disabled selected>Bitte auswählen</option>
         <option value="Frau">Frau</option>
         <option value="Herr">Herr</option>
@@ -11,65 +11,61 @@
       </select>
     </div>
     <div>
-      <label for="Vorname">Vorname:</label>
+      <label for="vorname">Vorname:</label>
       <input
         type="text"
-        name="Vorname"
-        id="Vorname"
+        name="vorname"
         placeholder="Vorname"
         required
       />
     </div>
     <div>
-      <label for="Nachname">Nachname:</label>
+      <label for="nachname">Nachname:</label>
       <input
         type="text"
-        name="Nachname"
-        id="Nachname"
+        name="nachname"
         placeholder="Nachname"
         required
       />
     </div>
     <div>
-      <label for="E-Mail">E-Mail:</label>
+      <label for="email">E-Mail:</label>
       <input
         type="email"
-        name="E-Mail"
-        id="E-Mail"
+        name="email"
         placeholder="E-Mail"
         required
       />
     </div>
     <div>
-      <label for="Username">Username:</label>
+      <label for="username">Username:</label>
       <input
         type="text"
-        name="Username"
-        id="Username"
+        name="username"
         placeholder="Username"
         required
       />
     </div>
     <div>
-      <label for="Passwort1">Passwort:</label>
+      <label for="passwort1">Passwort:</label>
       <input
         type="password"
-        name="Passwort1"
+        name="passwort1"
         placeholder="Passwort"
         required
       />
     </div>
     <div>
-      <label for="Passwort2">Passwort wiederholen:</label>
+      <label for="passwort2">Passwort wiederholen:</label>
       <input
         type="password"
-        name="Passwort2"
+        name="passwort2"
         placeholder="Passwort"
         required
       />
     </div>
     <div>
-      <input type="checkbox" name="Newsletter" value="Newsletter" checked class="checkbox"/>
+      <input type="checkbox" name="newsletter" value="Newsletter" checked class="checkbox"/>
       <label>Ich möchte mich zum Newletter anmelden!</label>
     </div>
     <div>
@@ -83,7 +79,7 @@
         gelesen!</label
       >
     </div>
-    <button type="Submit" class="submit-button">Senden</button>
+    <button type="submit" class="submit-button">Senden</button>
   </fieldset>
 </form>
     

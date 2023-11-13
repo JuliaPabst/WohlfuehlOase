@@ -1,22 +1,20 @@
-<form>
+<form action = "index.php?site=homepage" method = "post">
   <fieldset>
     <legend>Anmelden</legend>
     <div>
-      <label for="Username">Username: </label> 
+      <label for="usernameLoggedIn">Username: </label> 
       <input
         type="text"
-        name="Username"
-        id="Username"
+        name="usernameLoggedIn"
         placeholder="Username"
         required
       />
     </div>
     <div>
-      <label for="Passwort">Passwort: </label>
+      <label for="passwortLoggedIn">Passwort: </label>
       <input
         type="password"
-        name="Passwort"
-        id="Passwort"
+        name="passwortLoggedIn"
         placeholder="Passwort"
         required
       />
@@ -25,3 +23,5 @@
   </fieldset>
 </form>
    
+<?php 
+?>
