@@ -46,6 +46,14 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-family: "Libre Bodoni", serif;
+  font-weight: 100;
+  font-size: 35px;
+  margin: 5px 5px 15px 5px;
+  text-align: center;
+}
+
 a {
   font-family: "Quicksand", sans-serif;
   color: var(--secondary-color);
@@ -59,6 +67,7 @@ p {
   text-align: center; 
   color: var(--secondary-color);
   margin: 5px 0 20px 0;
+  padding: 15px;
 }
 
 button {
@@ -116,10 +125,11 @@ input {
 }
 
 .checkbox {
-  display: block;
-  font-size: 20px;
+  display: inline;
+  font-size: 50px;
   margin: 0;
-  float: left;
+  padding: 0;
+  
 }
 
 select {
@@ -137,6 +147,11 @@ textarea {
   display: block;
   margin: 5px 0px 20px 0px;
   width: 300px;
+}
+
+td{
+  width: 200px;
+  padding: 20px;
 }
 
 
@@ -256,6 +271,14 @@ textarea {
   font-family: "Quicksand", sans-serif;
   margin: 0px 20px 0px 0px;
 }
+
+.listen {
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+  text-align: left;
+}
+
+
 
 @media (min-width: 600px) {
   h1 {

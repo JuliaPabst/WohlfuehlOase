@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet3.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet1.css" />
   </head>
   <body>
    
@@ -40,17 +40,7 @@
 
     $_SESSION["usernameLoggedIn"] = $_POST["username"];
     $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
-  } 
-
-  if(isset($_POST["usernameLoggedIn"]) && isset($_POST["passwortLoggedIn"]) && isset($_POST["anrede"])){
-    $_SESSION["anrede"] = $_POST["anrede"];
-    $_SESSION["vorname"] = $_POST["vorname"];
-    $_SESSION["nachname"] = $_POST["nachname"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["newsletter"] = $_POST["newsletter"];
-    $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
-    $_SESSION["passwortLoggedIn"] = $_POST["passwortLoggedIn"];
-  } 
+  }  
 
   if(isset($_POST["logOut"])){
     unset($_SESSION["usernameLoggedIn"]);
@@ -82,12 +72,16 @@
    }
 
    if($_GET['site'] == "profil"){
-    include 'profil.php';
+    include 'profil/profil.php';
   }
  
-   if($_GET['site'] == "impressum"){
-     include 'impressum.php';
+   if($_GET['site'] == "neueReservierung"){
+     include 'zimmer/neueBuchung.php';
    }
+
+   if($_GET['site'] == "gebucht"){
+    include 'zimmer/listeBuchungen.php';
+  }
  ?>
 
     <footer>

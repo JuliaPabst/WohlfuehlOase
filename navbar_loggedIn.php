@@ -19,13 +19,11 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle navigation-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Reservierungen
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item navigation-link" href="#">Action</a></li>
-              <li><a class="dropdown-item navigation-link" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item navigation-link" href="#">Something else here</a></li>
+              <li><a class="dropdown-item navigation-link" href="/DOCUMENT_ROOT/index.php?site=gebucht">Gebuchte Reservierungen</a></li>
+              <li><a class="dropdown-item navigation-link" href="/DOCUMENT_ROOT/index.php?site=neueReservierung">Neue Reservierung</a></li>
             </ul>
           </li>
           <li class="nav-item">
