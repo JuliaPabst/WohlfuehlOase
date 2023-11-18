@@ -1,7 +1,7 @@
 <section id="title">
   <div id="home-image">
     <div class="header_logo d-flex justify-content-center" id="homescreen-logo">
-          <img id="makewhite" src="/DOCUMENT_ROOT/pictures/puntelogo.svg">
+          <img id="makewhite" src="/DOCUMENT_ROOT/pictures/wohlfuehloase_logo.png">
     </div>
 </section>
 

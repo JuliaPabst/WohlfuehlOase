@@ -192,6 +192,7 @@ td{
 
 #makewhite {
   filter: grayscale(1) brightness(10);
+  width: 400px;
 }
 
 .first-row {

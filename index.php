@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet1.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet2.css" />
   </head>
   <body>
    
@@ -47,11 +47,15 @@
   }
 
   if(!isset($_SESSION["usernameLoggedIn"]) && $_SESSION["passwortLoggedIn"]="1234"){
-    include 'navbar_loggedOut.php';
+    include 'logging_status/navbar_loggedOut.php';
   }
 
-  if(isset($_SESSION["usernameLoggedIn"])){
-    include 'navbar_loggedIn.php';
+  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin"){
+    include 'logging_status/navbar_loggedIn.php';
+  } 
+
+  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] == "admin"){
+    include 'logging_status/navbar_loggedIn_admin.php';
   } 
 
 
@@ -60,15 +64,19 @@
    }
  
    if($_GET['site'] == "help"){
-     include 'help.php';
+     include 'footer/help.php';
     }
+
+    if($_GET['site'] == "impressum"){
+      include 'footer/impressum.php';
+     }
  
    if($_GET['site'] == "anmelden"){
-     include 'anmelden.php';
+     include 'anmelden_registrieren/anmelden.php';
    }
  
    if($_GET['site'] == "registrieren"){
-     include 'registrieren.php';
+     include 'anmelden_registrieren/registrieren.php';
    }
 
    if($_GET['site'] == "profil"){
@@ -81,6 +89,10 @@
 
    if($_GET['site'] == "gebucht"){
     include 'zimmer/listeBuchungen.php';
+  }
+
+  if($_GET['site'] == "CMS"){
+    include 'cms.php';
   }
  ?>
 
