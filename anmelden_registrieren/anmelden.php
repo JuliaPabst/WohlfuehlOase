@@ -1,3 +1,10 @@
+<?php 
+if(isset($_SESSION["usernameLoggedIn"]) &&  $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"]){
+  echo "<h3>Falsches Passwort!</h3>";
+}
+
+?>
+
 <form action = "index.php?site=homepage" method = "post">
   <fieldset>
     <legend>Anmelden</legend>
@@ -23,5 +30,4 @@
   </fieldset>
 </form>
    
-<?php 
-?>
+

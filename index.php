@@ -46,11 +46,11 @@
     unset($_SESSION["usernameLoggedIn"]);
   }
 
-  if(!isset($_SESSION["usernameLoggedIn"]) && $_SESSION["passwortLoggedIn"]="1234"){
+  if(!isset($_SESSION["usernameLoggedIn"]) || $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != "admin"){
     include 'logging_status/navbar_loggedOut.php';
   }
 
-  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin"){
+  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin" && $_SESSION["usernameLoggedIn"] == $_SESSION["passwortLoggedIn"]){
     include 'logging_status/navbar_loggedIn.php';
   } 
 

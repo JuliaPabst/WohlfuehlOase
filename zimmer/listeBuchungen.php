@@ -58,3 +58,4 @@ if(isset($_POST["haustier"])){
     <td class="listen"><?php if(isset($_SESSION["buchungsStatus"])){echo $_SESSION["buchungsStatus"];}?></th>
   </tr>
 </table>
+
