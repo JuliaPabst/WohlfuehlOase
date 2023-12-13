@@ -20,41 +20,18 @@
    
 
  <?php
-
-  if(isset($_POST["usernameLoggedIn"]) && isset($_POST["passwortLoggedIn"])){
-    $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
-    $_SESSION["passwortLoggedIn"] = $_POST["passwortLoggedIn"];
-  } 
-
-
-  if(isset($_POST["username"])){
-    $_SESSION["anrede"] = $_POST["anrede"];
-    $_SESSION["vorname"] = $_POST["vorname"];
-    $_SESSION["nachname"] = $_POST["nachname"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["username"] = $_POST["username"];
-    $_SESSION["passwort1"] = $_POST["passwort1"];
-    $_SESSION["passwort2"] = $_POST["passwort2"];
-    $_SESSION["newsletter"] = $_POST["newsletter"];
-    $_SESSION["AGB"] = $_POST["AGB"];
-
-    $_SESSION["usernameLoggedIn"] = $_POST["username"];
-    $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
-  }  
+  
 
   if(isset($_POST["logOut"])){
     unset($_SESSION["usernameLoggedIn"]);
   }
 
-  if(!isset($_SESSION["usernameLoggedIn"]) || $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != "admin"){
-    include 'logging_status/navbar_loggedOut.php';
-  }
-
-  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin" && $_SESSION["usernameLoggedIn"] == $_SESSION["passwortLoggedIn"]){
+ 
+  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin"){
     include 'logging_status/navbar_loggedIn.php';
-  } 
-
-  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] == "admin"){
+  } else if (!isset($_SESSION["usernameLoggedIn"]) || $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != "admin"){
+    include 'logging_status/navbar_loggedOut.php';
+  } else if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] == "admin"){
     include 'logging_status/navbar_loggedIn_admin.php';
   } 
 

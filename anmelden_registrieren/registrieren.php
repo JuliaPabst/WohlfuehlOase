@@ -1,6 +1,11 @@
-<form action = "index.php?site=homepage" method = "post" class="registrierung-wrapping">
+<form action = "anmelden_registrieren/checkregistrieren.php" method = "post" class="registrierung-wrapping">
   <fieldset>
     <legend>Registrierung</legend>
+    <?php
+      if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
+          echo "<label style='font-weight: 600;'>Wählen Sie eine Anrede!</label>";
+        }
+    ?>
     <div>
       <label for="anrede">Anrede:</label>
       <select name="anrede" required>
@@ -10,6 +15,11 @@
         <option value="Keine Anrede">Keine Anrede</option>
       </select>
     </div>
+    <?php
+      if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
+          echo "<label style='font-weight: 600;'>Geben Sie einen Vornamen ohne Sonderzeichen ein!</label>";
+        }
+    ?>
     <div>
       <label for="vorname">Vorname:</label>
       <input
@@ -19,6 +29,11 @@
         required
       />
     </div>
+    <?php
+      if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
+          echo "<label style='font-weight: 600;'>Geben Sie einen Nachnamen ohne Sonderzeichen ein!</label>";
+        }
+    ?>
     <div>
       <label for="nachname">Nachname:</label>
       <input
@@ -28,6 +43,13 @@
         required
       />
     </div>
+
+    <?php
+      if(isset($_SESSION["emailVergleich"]) && ($_SESSION["emailVergleich"] == 0)){
+          echo "<label style='font-weight: 600;'>Das ist keine gültige Email-Adresse!</label>";
+        }
+    ?>
+
     <div>
       <label for="email">E-Mail:</label>
       <input
@@ -46,6 +68,13 @@
         required
       />
     </div>
+    
+    <?php
+      if(isset($_SESSION["passwortVergleich"]) && ($_SESSION["passwortVergleich"] == 0)){
+          echo "<label style='font-weight: 600;'>Passwörter stimmen nicht überein!</label>";
+        }
+    ?>
+
     <div>
       <label for="passwort1">Passwort:</label>
       <input

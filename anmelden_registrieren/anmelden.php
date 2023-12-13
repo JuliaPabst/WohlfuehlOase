@@ -1,13 +1,11 @@
-<?php 
-if(isset($_SESSION["usernameLoggedIn"]) &&  $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"]){
-  echo "<h3>Falsches Passwort!</h3>";
-}
-
-?>
-
-<form action = "index.php?site=homepage" method = "post">
+<form action = "db/dbanmelden.php" method = "post">
   <fieldset>
     <legend>Anmelden</legend>
+    <?php
+      if(isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] == 0){
+          echo "<label style='font-weight: 600;'>Falsches Passwort oder Username!</label>";
+        }
+    ?>
     <div>
       <label for="usernameLoggedIn">Username: </label> 
       <input
