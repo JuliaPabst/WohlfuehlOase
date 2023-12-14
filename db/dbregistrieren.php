@@ -1,29 +1,33 @@
 <?php 
     session_start();
+
     require("dbaccess.php");
     
-    if(isset($_POST["anrede"])){
-      $sql = "INSERT INTO users (id, Username, Passwort, Anrede, Vorname, Nachname, Email, Newsletter, Rolle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (id, Username, Passwort, Anrede, Vorname, Nachname, Email, Newsletter, Rolle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-      $stmt = $db_obj->prepare($sql);
-      $stmt-> bind_param("issssssis", $id, $Username, $Passwort, $Anrede, $Vorname, $Nachname, $Email, $Newsletter, $Rolle);
+    $stmt = $db_obj->prepare($sql);
+    $id = "NULL";
     
-      $id = "NULL";
-      $Username = $_POST["username"];
-      $Passwort = $_POST["passwort1"];
-      $Anrede = $_POST["anrede"];
-      $Vorname = $_POST["vorname"];
-      $Nachname = $_POST["nachname"];
-      $Email = $_POST["email"]; 
-      if (!isset($_POST["newsletter"])){
-        $Newsletter = 0;
-      } else {
-        $Newsletter = 1;
-      }
-      $Rolle = "user";
+    $stmt-> bind_param("issssssis", $id, $Username, $Passwort, $Anrede, $Vorname, $Nachname, $Email, $Newsletter, $Rolle);
+  
+    $Username = $_SESSION["Username"];
+    $Passwort = $_SESSION["Passwort"];
+    $Anrede = $_SESSION["Anrede"];
+    $Vorname = $_SESSION["Vorname"];
+    $Nachname = $_SESSION["Nachname"];
+    $Email = $_SESSION["Email"]; 
+    $Newsletter = $_SESSION["Newsletter"];
+    $Rolle = "user";
 
-      $stmt->execute();
-    }
+    $_SESSION["anmeldeStatus"] = 2;
+    $_SESSION["usernameLoggedIn"] = $_SESSION["Username"];
+    $_SESSION["passwortLoggedIn"] = $_SESSION["Passwort"];
+
+    $stmt->execute();
+    
 
     header('Location: /DOCUMENT_ROOT/index.php?site=homepage');
+    exit; 
+    
+    
 ?>

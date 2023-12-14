@@ -1,7 +1,10 @@
-<form action = "anmelden_registrieren/checkregistrieren.php" method = "post" class="registrierung-wrapping">
+<form action = "db/checkregistrieren.php" method = "post" class="registrierung-wrapping">
   <fieldset>
     <legend>Registrierung</legend>
     <?php
+      if(isset($_SESSION["bereitsAccount"]) && $_SESSION["bereitsAccount"] == 1){
+        echo "<label style='font-weight: 600;'>Dieser Username ist leider bereits vergeben!</label>";
+      }
       if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Wählen Sie eine Anrede!</label>";
         }
@@ -98,7 +101,7 @@
       <label>Ich möchte mich zum Newletter anmelden!</label>
     </div>
     <div>
-      <input type="checkbox" name="AGB" value="AGB" class="checkbox" />
+      <input type="checkbox" name="AGB" value="AGB" class="checkbox" required/>
       <label
         >Ich habe die
         <a

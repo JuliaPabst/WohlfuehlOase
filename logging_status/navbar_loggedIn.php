@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            Hallo, <?php echo $_SESSION["usernameLoggedIn"]?>!
+            Hallo, <?php echo $_SESSION["Vorname"]?>!
           </li>  
         <li class="nav-item">
             <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>

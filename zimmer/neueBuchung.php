@@ -1,9 +1,28 @@
-<form action="index.php?site=gebucht" method="post">
+<form action="zimmer/checkReservierungen.php" method="post">
     <legend>Neue Buchung</legend>
+    <?php 
+    if(isset($_SESSION["anreiseVorHeute"]) && $_SESSION["anreiseVorHeute"] == 1){
+        echo "<label style='font-weight: 600;'>Wählen Sie ein Anreisedatum in der Zukunft!</label></br>";
+    }
+    ?>
+
+    <?php 
+    if(isset($_SESSION["anreiseNachAbreise"]) && $_SESSION["anreiseNachAbreise"] == 1){
+        echo "<label style='font-weight: 600;'>Sie müssen anreisen, bevor Sie abreisen können!</label></br>";
+    }
+    ?>
+
     <label for="anreise">Anreise:</label>
-    <input type="date" name="anreise">
-    <label for="abreise">Anreise:</label>
-    <input type="date" name="abreise">
+    <input type="date" name="anreise" required>
+
+    <?php 
+    if(isset($_SESSION["abreiseVorHeute"]) && $_SESSION["abreiseVorHeute"] == 1){
+        echo "<label style='font-weight: 600;'>Wählen Sie ein Abreisedatum in der Zukunft!</label></br>";
+    }
+    ?>
+
+    <label for="abreise">Abreise:</label>
+    <input type="date" name="abreise" required>
     <div>
         <label for="fruehstueck">Mit Frühstück</label>
         <input type="checkbox" name="fruehstueck" class="checkbox" checked/>
@@ -16,9 +35,7 @@
         <label for="haustier">Mit Haustier</label>
         <input type="checkbox" name="haustier" class="checkbox" />
     </div>
-    <label for="anzahlHaustiere">Anzahl Haustiere:</label>
-    <input type="number" name="abreise">
-    <label for="tierart">Tierart:</label>
-    <input type="text" name="tierart">
-    <button type="submit">Buchen</button>
+    <label for="infosHaustier">Mehr Informationen zum Haustier:</label>
+    <input type="text" name="infosHaustier">
+    <input type="submit">
 </form>

@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet2.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet.css" />
   </head>
   <body>
    
@@ -23,16 +23,23 @@
   
 
   if(isset($_POST["logOut"])){
-    unset($_SESSION["usernameLoggedIn"]);
+    unset($_SESSION["anmeldeStatus"]);
+    unset($_SESSION["anreiseVorHeute"]);
+    unset($_SESSION["abreiseVorHeute"]);
+    unset($_SESSION["anreiseNachAbreise"]);
+    unset($_SESSION["Vorname"]);
+    unset($_SESSION["Nachname"]);
+    unset($_SESSION["Rolle"]);
+    unset($_SESSION["bereitsAccount"]);
   }
 
  
-  if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] != "admin"){
-    include 'logging_status/navbar_loggedIn.php';
-  } else if (!isset($_SESSION["usernameLoggedIn"]) || $_SESSION["usernameLoggedIn"] != $_SESSION["passwortLoggedIn"] && $_SESSION["usernameLoggedIn"] != "admin"){
-    include 'logging_status/navbar_loggedOut.php';
-  } else if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION["usernameLoggedIn"] == "admin"){
+  if (isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] == 1){
     include 'logging_status/navbar_loggedIn_admin.php';
+  } else if(isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] == 2){
+    include 'logging_status/navbar_loggedIn.php';
+  }  else {
+    include 'logging_status/navbar_loggedOut.php';
   } 
 
 
@@ -65,7 +72,7 @@
    }
 
    if($_GET['site'] == "gebucht"){
-    include 'zimmer/listeBuchungen.php';
+    include 'db/listeBuchungen.php';
   }
 
   if($_GET['site'] == "CMS"){
