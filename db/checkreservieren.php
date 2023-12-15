@@ -2,6 +2,22 @@
     session_start();
     $redirectToBooking = 0; 
 
+    require("dbaccess.php");
+
+    $sql = "SELECT Anreise, Abreise FROM buchungen";
+    $result = $db_obj->query($sql);
+
+
+
+    while ($row = $result->fetch_array()) { 
+        if(($_POST["anreise"] >= $row['Anreise'] && $_POST["abreise"] <= $row['Abreise']) || 
+            ($_POST["anreise"] >= $row['Anreise'] && $_POST["anreise"] <= $row['Abreise'] && $_POST["abreise"] >= $row['Abreise']) || 
+            ($_POST["anreise"] <= $row['Anreise']) && ($_POST["abreise"] >= $row['Anreise'])){
+            $_SESSION["schonAusgebucht"] = 1;
+            $redirectToBooking = 1; 
+            }
+    }
+
     
     if(isset($_POST["anreise"]) && isset($_POST["abreise"])){
         if($_POST["anreise"] < date("Y-m-d")){

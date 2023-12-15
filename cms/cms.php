@@ -3,6 +3,8 @@
     <input type="file" name="thumbnail" accept="image/jpeg" required>    
     <label for="titel">Titel</label>   
     <input type="text" name="titel" required>
+    <label for="lead">Lead</label>   
+    <textarea name="lead" required></textarea>
     <label for="text">Text</label>
     <textarea name="text" required></textarea>
     <button type="submit">Senden</button>

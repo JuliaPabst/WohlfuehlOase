@@ -34,7 +34,7 @@
       <div class="col-lg-6 px-0 column-bigscreen"><p>Abreise:</p></div>
       <div class="col-lg-6 px-0 column-bigscreen"><p>'.$row["Abreise"].'</p></div>
         </div>';
-      if($row["Frühstück"] == 0){
+      if($row["Frühstück"] == 1){
         echo '<div class="row first-row">
         <div class="col-lg-6 px-0 column-bigscreen"><p>Mit Frühstück:</p></div>
         <div class="col-lg-6 px-0 column-bigscreen"><p>ja</p></div>
@@ -45,7 +45,7 @@
         <div class="col-lg-6 px-0 column-bigscreen"><p>nein</p></div>
         </div>';
       }
-      if($row["Parkplatz"] == 0){
+      if($row["Parkplatz"] == 1){
         echo '<div class="row first-row">
         <div class="col-lg-6 px-0 column-bigscreen"><p>Mit Parkplatz:</p></div>
         <div class="col-lg-6 px-0 column-bigscreen"><p>ja</p></div>
@@ -56,7 +56,7 @@
         <div class="col-lg-6 px-0 column-bigscreen"><p>nein</p></div>
         </div>';
       }
-      if($row["Haustier"] == 0){
+      if($row["Haustier"] == 1){
         echo '<div class="row first-row">
         <div class="col-lg-6 px-0 column-bigscreen"><p>Mit Haustier:</p></div>
         <div class="col-lg-6 px-0 column-bigscreen"><p>ja</p></div>

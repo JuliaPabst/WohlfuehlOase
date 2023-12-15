@@ -68,7 +68,7 @@
   }
  
    if($_GET['site'] == "neueReservierung"){
-     include 'zimmer/neueBuchung.php';
+     include 'db/neueBuchung.php';
    }
 
    if($_GET['site'] == "gebucht"){

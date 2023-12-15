@@ -23,9 +23,10 @@
     $HaustierInfo = $_SESSION["InfosHaustier"];
     $Buchungsstatus = "In Bearbeitung";
  
-
+    $_SESSION["schonAusgebucht"] = 0;
     $stmt->execute();
     
-    header('Location: /DOCUMENT_ROOT/index.php?site=homepage');
+    
+    header('Location: /DOCUMENT_ROOT/index.php?site=gebucht');
     exit; 
 ?>
