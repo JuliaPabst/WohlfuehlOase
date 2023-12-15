@@ -148,18 +148,6 @@ textarea {
   width: 300px;
 }
 
-td {
-  width: 200px;
-  padding: 20px;
-}
-
-table {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  width: 400px;
-}
 
 #navbar-image {
   height: 50px;
@@ -283,6 +271,23 @@ table {
   font-size: 25px;
   text-align: left;
 }
+
+.thumbnail{
+    margin: auto;
+    padding: 0;
+    display: block;
+}
+
+.newsBeitrag{
+  margin-bottom: 200px;
+}
+
+.newsHeadline{
+  margin-top: 40px;
+  padding: 0;
+}
+
+
 
 @media (min-width: 600px) {
   h1 {
@@ -441,4 +446,18 @@ table {
   header {
     padding: 0 0 0 20px;
   }
+
+  .thumbnail{
+    margin: auto;
+    padding: 0;
+    display: block;
+    width: 900px;
+}
+  .newsBeitrag{
+    margin: auto;
+    display: block;
+    width: 900px; 
+    
+  }
+
 }

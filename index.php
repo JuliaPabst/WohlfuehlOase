@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet4.css" />
   </head>
   <body>
    
@@ -63,8 +63,16 @@
      include 'anmelden_registrieren/registrieren.php';
    }
 
-   if($_GET['site'] == "profil"){
+   if($_GET['site'] == "profilAnzeigen"){
+    include 'profil/profilAnzeigen.php';
+  }
+
+  if($_GET['site'] == "profil"){
     include 'profil/profil.php';
+  }
+
+  if($_GET['site'] == "profilBearbeiten"){
+    include 'profil/profilBearbeiten.php';
   }
  
    if($_GET['site'] == "neueReservierung"){
@@ -76,7 +84,11 @@
   }
 
   if($_GET['site'] == "CMS"){
-    include 'cms.php';
+    include 'cms/cms.php';
+  }
+
+  if($_GET['site'] == "news"){
+    include 'db/news.php';
   }
  ?>
 

@@ -1,12 +1,13 @@
 <h2>Mein Profil</h2>
 
-<p class="listen">Anrede: <?php echo $_SESSION["anrede"]?></p>
-<p class="listen">Vorname: <?php echo $_SESSION["vorname"]?></p>
-<p class="listen">Nachname: <?php echo $_SESSION["nachname"]?></p>
-<p class="listen">E-Mail: <?php echo $_SESSION["email"]?></p>
+<p class="listen">Anrede: <?php echo $_SESSION["Anrede"]?></p>
+<p class="listen">Vorname: <?php echo $_SESSION["Vorname"]?></p>
+<p class="listen">Nachname: <?php echo $_SESSION["Nachname"]?></p>
+<p class="listen">E-Mail: <?php echo $_SESSION["Email"]?></p>
 <p class="listen">Username: <?php echo $_SESSION["usernameLoggedIn"]?></p>
- 
-<form action="index.php?site=profil" method="post">
+
+
+<form action="index.php?site=profilBearbeiten" method="post">
     <input name="bearbeiten" value="ja" hidden>
     <button type= submit>Profil bearbeiten</button>
 </form>
