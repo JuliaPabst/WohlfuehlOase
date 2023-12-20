@@ -69,7 +69,8 @@
       }
         echo '<div class="row first-row">
         <div class="col-lg-6 px-0 column-bigscreen"><p>Buchungsstatus:</p></div>
-        <div class="col-lg-6 px-0 column-bigscreen"><p>'.$row["Buchungsstatus"].'</p></div>
+        <div class="col-lg-6 px-0 column-bigscreen">
+          <form action="http://localhost/DOCUMENT_ROOT/index.php?site=gebucht"<p>'.$row["Buchungsstatus"].'</p></div>
         </div>';    
         echo '</div>'; 
     }    

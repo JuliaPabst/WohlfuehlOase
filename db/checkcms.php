@@ -47,6 +47,7 @@
     if(isset($_FILES["thumbnail"])){
         if($_FILES["thumbnail"]["type"] == "image/jpeg"){
             $imageName = $pictureTitle.".jpeg";
+            $_SESSION["Bild"] = $imageName;
             $urlPathClient = '/DOCUMENT_ROOT/uploads/' . $imageName;
             
             $destinationServer = str_replace("db", "", getcwd() . "uploads\\" . $imageName);

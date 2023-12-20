@@ -2,7 +2,7 @@
 <?php
   require("dbaccess.php");
 
-  $sql = "SELECT Titel, Lead, Textfeld FROM newsbeiträge";
+  $sql = "SELECT Titel, Lead, Textfeld FROM news";
   $result = $db_obj->query($sql);
 
   
