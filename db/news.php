@@ -2,7 +2,7 @@
 <?php
   require("dbaccess.php");
 
-  $sql = "SELECT Titel, Lead, Textfeld FROM news";
+  $sql = "SELECT Titel, Lead, Textfeld FROM news ORDER BY id desc";
   $result = $db_obj->query($sql);
 
   

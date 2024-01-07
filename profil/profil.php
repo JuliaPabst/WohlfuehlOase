@@ -1,4 +1,9 @@
 <?php
+  if(isset($_POST["changeType"])) {
+    $_SESSION["changeType"] = $_POST["changeType"];  
+  }
+
+
   if(isset($_POST["passwortLoggedIn"]) && $_POST["passwortLoggedIn"] == $_SESSION["passwortLoggedIn"] && !isset($_POST["anrede"])) {
     $_SESSION["passwortCheckProfil"] = 1;
     include 'profil/profilBearbeiten.php';

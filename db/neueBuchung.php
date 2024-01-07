@@ -50,7 +50,7 @@
     </div>
     <div>    
         <label for="parkplatz">Mit Parkplatz: 15€ Aufpreis</label>
-        <input type="checkbox" name="parkplatz" class="checkbox" checked/>
+        <input type="checkbox" name="parkplatz" class="checkbox"/>
     </div>
     <div>
         <label for="haustier">Mit Haustier: 15€ Aufpreis</label>

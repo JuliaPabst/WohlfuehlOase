@@ -5,7 +5,7 @@
         }
     ?>
     <label for="thumbnail">Thumbnail</label>      
-    <input type="file" name="thumbnail" accept="image/jpeg" required>    
+    <input type="file" name="thumbnail" accept="image/jpeg">    
     <?php
       if(isset($_SESSION["titelVergleich"]) && ($_SESSION["titelVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Fügen Sie einen Titel hinzu!</label>";

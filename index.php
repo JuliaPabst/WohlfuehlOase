@@ -14,12 +14,14 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet5.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet0.css" />
   </head>
   <body>
    
 
  <?php
+
+ 
   
 
   if(isset($_POST["logOut"])){
@@ -56,31 +58,59 @@
      }
  
    if($_GET['site'] == "anmelden"){
-     include 'anmelden_registrieren/anmelden.php';
+    if(!isset($_SESSION["anmeldeStatus"]) || $_SESSION["anmeldeStatus"] == 0){
+      include 'anmelden_registrieren/anmelden.php';
+    } else {
+      echo "<p>Sie sind bereits angemeldet!</p>";
+    }
    }
  
    if($_GET['site'] == "registrieren"){
-     include 'anmelden_registrieren/registrieren.php';
+    if(!isset($_SESSION["anmeldeStatus"])){
+      include 'anmelden_registrieren/registrieren.php';
+    } else {
+      echo "<p>Sie sind bereits angemeldet!</p>";
+    }
    }
 
    if($_GET['site'] == "profilAnzeigen"){
-    include 'profil/profilAnzeigen.php';
+    if(!isset($_SESSION["anmeldeStatus"])){
+      echo "<p>Sie sind nicht angemeldet!</p>";
+    } else {
+      include 'profil/profilAnzeigen.php';
+    }
   }
 
   if($_GET['site'] == "profil"){
-    include 'profil/profil.php';
+    if(!isset($_SESSION["anmeldeStatus"])){
+      echo "<p>Sie sind nicht angemeldet!</p>";
+    } else {
+      include 'profil/profil.php';
+    }
   }
 
-  if($_GET['site'] == "profilBearbeiten"){
-    include 'profil/profilBearbeiten.php';
-  }
+  /*if($_GET['site'] == "profilBearbeiten"){
+    if(!isset($_SESSION["anmeldeStatus"])){
+      echo "<p>Sie sind nicht angemeldet!</p>";
+    } else {
+      include 'profil/profilBearbeiten.php';
+    }
+  } */
  
    if($_GET['site'] == "neueReservierung"){
-     include 'db/neueBuchung.php';
+    if(!isset($_SESSION["anmeldeStatus"])){
+      echo "<p>Melden Sie sich bitte an, um ein Zimmer zu buchen!</p>";
+    } else {
+      include 'db/neueBuchung.php';
+    }
    }
 
    if($_GET['site'] == "gebucht"){
-    include 'db/listeBuchungen.php';
+    if(!isset($_SESSION["anmeldeStatus"])){
+      echo "<p>Melden Sie sich bitte an, um Ihre Buchungen einzusehen!</p>";
+    } else {
+      include 'db/listeBuchungen.php';
+    }
   }
 
   if($_GET['site'] == "CMS"){
@@ -89,6 +119,9 @@
 
   if($_GET['site'] == "news"){
     include 'db/news.php';
+  }
+  if($_GET['site'] == "users"){
+    include 'db/users.php';
   }
  ?>
 

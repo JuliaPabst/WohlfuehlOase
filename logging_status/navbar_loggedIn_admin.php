@@ -24,8 +24,8 @@
           <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=CMS">CMS</a>
           </li> 
           <li class="nav-item">
-          <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=profil">Profil bearbeiten</a>
-          </li>  
+          <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=users">Alle User</a>
+          </li> 
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">

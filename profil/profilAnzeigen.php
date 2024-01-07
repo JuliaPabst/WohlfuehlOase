@@ -26,6 +26,7 @@ if(isset($_POST["bearbeiten"])){
         />
         <input name="bearbeiten" value="ja" hidden>
         </div>
+        <input name="changeType" value="user" hidden>
         <button type="submit">Senden</button>
     </form>';
 }

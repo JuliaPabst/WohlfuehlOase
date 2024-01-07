@@ -8,7 +8,7 @@
 
 
     while ($row = $result->fetch_array()) { 
-        if($_POST["usernameLoggedIn"] == $row['Username'] && $_POST["passwortLoggedIn"] == $row['Passwort']){
+        if($_POST["usernameLoggedIn"] == $row['Username'] && password_verify($_POST["passwortLoggedIn"], $row['Passwort'])){
             if($_POST["usernameLoggedIn"] == "hoteladmin" && $_POST["passwortLoggedIn"] == 1234){
                 $_SESSION["anmeldeStatus"] = 1;
                 $_SESSION["Rolle"] = $row['Rolle'];

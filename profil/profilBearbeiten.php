@@ -45,7 +45,7 @@
     </div>
     <?php
       if(isset($_SESSION["emailVergleich"]) && ($_SESSION["emailVergleich"] == 0)){
-          echo "<label style='font-weight: 600;'>Das ist keine gültige Email-Adresse!</label>";
+          echo "<label style='font-weight: 600;'>Das war keine gültige Email-Adresse!</label>";
         }
     ?>
     <div>
@@ -102,5 +102,6 @@
       <input type="checkbox" name="newsletter" <?php if($_SESSION["Newsletter"]){echo "checked";}?> class="checkbox"/>
       <label for="newsletter">Ich möchte mich zum Newletter anmelden!</label>
     </div>
+    <input name="role" value="user" hidden>
     <button type="submit">Senden</button>
 </form>

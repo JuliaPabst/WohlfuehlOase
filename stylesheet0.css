@@ -185,7 +185,7 @@ textarea {
 
 #makewhite {
   filter: grayscale(1) brightness(10);
-  width: 400px;
+  width: 300px;
 }
 
 .first-row {
@@ -348,6 +348,11 @@ textarea {
 
   #home-image {
     padding: 120px;
+  }
+
+  #makewhite {
+    filter: grayscale(1) brightness(10);
+    width: 400px;
   }
 
   #impressum-main {
