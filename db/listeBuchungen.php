@@ -6,7 +6,7 @@
 <?php 
   require("dbaccess.php");
 
-  $sql = "SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz FROM buchungen";
+  $sql = "SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen";
   $result = $db_obj->query($sql);
   $counter = 0;
 
@@ -15,6 +15,7 @@
     if(($row["Vorname"] == $_SESSION["Vorname"] && $row["Nachname"] == $_SESSION["Nachname"])|| ($_SESSION["Vorname"] == "Hotel" && $_SESSION["Nachname"] == "Admin")){
       $counter = $counter + 1;  
       echo '<h3>Buchung '.$counter.'</h3>';
+      echo '<p>'.$row["Datum"].'</p>';
       echo '<div class="container-fluid">';
       if($_SESSION["Vorname"] == "Hotel" && $_SESSION["Nachname"] == "Admin"){
         echo '<div class="row first-row">

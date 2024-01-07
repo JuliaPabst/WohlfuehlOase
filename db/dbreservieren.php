@@ -5,12 +5,12 @@
 
    
     
-    $sql = "INSERT INTO buchungen (id, Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO buchungen (id, Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $db_obj->prepare($sql);
     $id = "NULL";
     
-    $stmt-> bind_param("issssddssd", $id, $Vorname, $Nachname, $Anreise, $Abreise, $Fruehstueck, $Haustier, $HaustierInfo, $Buchungsstatus, $Parkplatz);
+    $stmt-> bind_param("issssddssds", $id, $Vorname, $Nachname, $Anreise, $Abreise, $Fruehstueck, $Haustier, $HaustierInfo, $Buchungsstatus, $Parkplatz, $Datum);
 
     $id = NULL; 
     $Vorname = $_SESSION["Vorname"];
@@ -22,6 +22,7 @@
     $Haustier = $_SESSION["Haustier"];
     $HaustierInfo = $_SESSION["InfosHaustier"];
     $Buchungsstatus = "In Bearbeitung";
+    $Datum = date("Y-m-d H:i:s", time());
  
     $_SESSION["schonAusgebucht"] = 0;
     $stmt->execute();

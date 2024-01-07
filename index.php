@@ -66,7 +66,7 @@
    }
  
    if($_GET['site'] == "registrieren"){
-    if(!isset($_SESSION["anmeldeStatus"])){
+    if(!isset($_SESSION["anmeldeStatus"]) || $_SESSION["anmeldeStatus"] == 0){
       include 'anmelden_registrieren/registrieren.php';
     } else {
       echo "<p>Sie sind bereits angemeldet!</p>";
