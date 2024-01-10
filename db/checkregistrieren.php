@@ -1,21 +1,29 @@
 <?php
   session_start();
 
-  $redirectToRegister = 0; 
 
+  $redirectToRegister = 0; 
 
   require("dbaccess.php");
 
-    $sql = "SELECT Username, Passwort, Vorname, Nachname FROM users";
-    $result = $db_obj->query($sql);
+  $SESSION["bereitsAccount"] = 0;
 
-    $SESSION["bereitsAccount"] = 0;
-    while ($row = $result->fetch_array()) { 
-        if($_POST["username"] == $row['Username']){
-            $_SESSION["bereitsAccount"] = 1; 
-            $redirectToRegister = 1;
-        } 
+  if (isset($_POST["username"])) {
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden
+    $stmt = $db_obj->prepare("SELECT Username FROM users WHERE Username = ?");
+    $stmt->bind_param("s", $_POST["username"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->fetch_array()) { 
+        $_SESSION["bereitsAccount"] = 1; 
+        $redirectToRegister = 1;
+    } else {
+        $_SESSION["bereitsAccount"] = 0;
     }
+
+    $stmt->close();
+}
 
   if(!isset($_POST["anrede"]) || !($_POST["anrede"] == "Frau" || $_POST["anrede"] == "Herr" || $_POST["anrede"] == "Keine Anrede")) {
     $_SESSION["anredeVergleich"] = 0;

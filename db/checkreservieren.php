@@ -4,21 +4,28 @@
 
     require("dbaccess.php");
 
-    $sql = "SELECT Anreise, Abreise FROM buchungen";
-    $result = $db_obj->query($sql);
-
-
+  
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden
+    $stmt = $db_obj->prepare("SELECT Anreise, Abreise FROM buchungen WHERE (Anreise <= ? AND Abreise >= ?) OR (Anreise <= ? AND Abreise >= ?) OR (Anreise >= ? AND Abreise <= ?)");
+    $anreise = $_POST["anreise"];
+    $abreise = $_POST["abreise"];
+    $stmt->bind_param("ssssss", $anreise, $anreise, $abreise, $abreise, $anreise, $abreise);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     while ($row = $result->fetch_array()) { 
-        if(($_POST["anreise"] >= $row['Anreise'] && $_POST["abreise"] <= $row['Abreise']) || 
-            ($_POST["anreise"] >= $row['Anreise'] && $_POST["anreise"] <= $row['Abreise'] && $_POST["abreise"] >= $row['Abreise']) || 
-            ($_POST["anreise"] <= $row['Anreise']) && ($_POST["abreise"] >= $row['Anreise'])){
+        if ((($_POST["anreise"] >= $row['Anreise'] && $_POST["abreise"] <= $row['Abreise']) || 
+        ($_POST["anreise"] >= $row['Anreise'] && $_POST["anreise"] <= $row['Abreise'] && $_POST["abreise"] >= $row['Abreise']) || 
+        ($_POST["anreise"] <= $row['Anreise']) && ($_POST["abreise"] >= $row['Anreise']))) { 
             $_SESSION["schonAusgebucht"] = 1;
-            $redirectToBooking = 1; 
-            }
+            $redirectToBooking = 1;
+        } else {
+            $_SESSION["schonAusgebucht"] = 0;
+        }
     }
-
+    $stmt->close();
     
+
     if(isset($_POST["anreise"]) && isset($_POST["abreise"])){
         if($_POST["anreise"] < date("Y-m-d")){
             $_SESSION["anreiseVorHeute"] = 1;
@@ -67,7 +74,6 @@
     $_SESSION["Anreise"] = $_POST["anreise"];
     $_SESSION["Abreise"] = $_POST["abreise"];
 
-
     if($redirectToBooking == 1){
         header('Location: /DOCUMENT_ROOT/index.php?site=neueReservierung');
         exit;
@@ -75,5 +81,4 @@
         header('Location: /DOCUMENT_ROOT/db/dbreservieren.php');
         exit;
       } 
-
 ?>

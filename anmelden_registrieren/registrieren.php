@@ -28,7 +28,12 @@
       <input
         type="text"
         name="vorname"
-        placeholder="Vorname"
+        <?php if($_SESSION["Vorname"]){
+          echo 'value="'.$_SESSION["Vorname"].'"';
+        } else {
+         echo 'placeholder="Vorname"';
+        }
+        ?>
         required
       />
     </div>
@@ -42,7 +47,12 @@
       <input
         type="text"
         name="nachname"
-        placeholder="Nachname"
+        <?php if($_SESSION["Nachname"]){
+          echo 'value="'.$_SESSION["Nachname"].'"';
+        } else {
+         echo 'placeholder="Nachname"';
+        }
+        ?>
         required
       />
     </div>
@@ -58,7 +68,12 @@
       <input
         type="email"
         name="email"
-        placeholder="E-Mail"
+        <?php if($_SESSION["Email"]){
+          echo 'value="'.$_SESSION["Email"].'"';
+        } else {
+         echo 'placeholder="E-Mail"';
+        }
+        ?>
         required
       />
     </div>
@@ -67,7 +82,12 @@
       <input
         type="text"
         name="username"
-        placeholder="Username"
+        <?php if($_SESSION["Username"]){
+          echo 'value="'.$_SESSION["Username"].'"';
+        } else {
+         echo 'placeholder="Username"';
+        }
+        ?>
         required
       />
     </div>
