@@ -1,17 +1,13 @@
 <h2> Alle Buchungen</h2>
-
-
-
-
 <?php 
+  $counter = 0;
   require("dbaccess.php");
 
-  $sql = "SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen";
-  $result = $db_obj->query($sql);
-  $counter = 0;
+  $stmt = $db_obj->prepare("SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-  
-  while ($row = $result->fetch_array()) {
+  while ($row = $result->fetch_assoc()) {
     if(($row["Vorname"] == $_SESSION["Vorname"] && $row["Nachname"] == $_SESSION["Nachname"])|| ($_SESSION["Vorname"] == "Hotel" && $_SESSION["Nachname"] == "Admin")){
       $counter = $counter + 1;  
       echo '<h3>Buchung '.$counter.'</h3>';
@@ -76,6 +72,8 @@
         
     }    
   } 
+
+  $stmt->close();
 ?>
 
 

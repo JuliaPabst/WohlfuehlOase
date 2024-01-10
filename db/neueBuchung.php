@@ -2,15 +2,15 @@
     <legend>Neue Buchung</legend>
     <div><label>80€ pro Zimmer pro Nacht</label></div>
     <?php 
-
-
-        require("dbaccess.php");
-
-        $sql = "SELECT Anreise, Abreise FROM buchungen";
-        $result = $db_obj->query($sql);
         $alreadyPrintedAusgebuchtHeadline = 0;
 
-        while ($row = $result->fetch_array()) { 
+        require("dbaccess.php");
+        $stmt = $db_obj->prepare("SELECT Anreise, Abreise FROM buchungen");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+
+        while ($row = $result->fetch_assoc()) { 
             if($alreadyPrintedAusgebuchtHeadline == 0){
                 echo '<div><label style="font-weight: 600;">Bereits ausgebuchte Zeiträume:</label></div>';
                 $alreadyPrintedAusgebuchtHeadline++;
@@ -18,6 +18,8 @@
             
             echo '<div><label>'.$row['Anreise'].' bis '.$row['Abreise'].'</label></div>';
         }
+
+        $stmt->close();
 
         
         if(isset($_SESSION["schonAusgebucht"] ) && $_SESSION["schonAusgebucht"] == 1){

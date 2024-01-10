@@ -8,11 +8,13 @@
 
   require("dbaccess.php");
 
-  $sql = "SELECT Username, Passwort, Vorname, Nachname FROM users";
-  $result = $db_obj->query($sql);
+  $stmt = $db_obj->prepare("SELECT Username, Passwort, Vorname, Nachname FROM users WHERE Username = ?");
+  $stmt->bind_param("s", $_POST['username']);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
   if(isset($_SESSION["changeType"]) && $_SESSION["changeType"]=="user"){
-    while ($row = $result->fetch_array()) { 
+    while ($row = $result->fetch_assoc()) { 
       
       if($_POST["username"] == $row['Username'] && $row['Username'] != $_SESSION['usernameLoggedIn']){
           $_SESSION["bereitsAccount"] = 0; 
@@ -23,7 +25,7 @@
       }
     }
   } else {
-    while ($row = $result->fetch_array()) { 
+    while ($row = $result->fetch_assoc()) { 
       if($_POST["username"] == $row['Username'] && isset($_SESSION["selectedUser"]) && $_POST["username"]  != $_SESSION["selectedUser"]){
         $_SESSION["bereitsAccount"] = 0; 
         $redirectToProfilBearbeiten = 1;
@@ -32,6 +34,7 @@
           $_SESSION["Username"] = $_POST["username"];
       }
     }
+    $stmt->close();
     }
     
 
@@ -147,7 +150,6 @@
   } else {
     if(isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "user"){
       $_SESSION["userBearbeiten"] = 1;
-      echo $_SESSION["userBearbeiten"]; 
       header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit;
     } else {

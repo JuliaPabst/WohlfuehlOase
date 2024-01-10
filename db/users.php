@@ -15,8 +15,10 @@ if(isset($_POST["changeType"])) {
   require("dbaccess.php");
 
   $sql = "SELECT id, Username, Passwort, Anrede, Vorname, Nachname, Email, Newsletter, aktiv FROM users";
-  $result = $db_obj->query($sql);
-  while ($row = $result->fetch_array()) { 
+  $stmt = $db_obj->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  while ($row = $result->fetch_assoc()) { 
     if(isset($_SESSION["userBearbeiten"]) && $_SESSION["userBearbeiten"] == 1 && ((isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]) || (isset($_SESSION["selectedUser"] ) && $_SESSION["selectedUser"] == $row["Username"]))) {
         $_SESSION["Vorname"] = $row["Vorname"];
         $_SESSION["Nachname"] = $row["Nachname"];

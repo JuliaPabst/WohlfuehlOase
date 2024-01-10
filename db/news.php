@@ -3,7 +3,9 @@
   require("dbaccess.php");
 
   $sql = "SELECT id, Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
-  $result = $db_obj->query($sql);
+  $stmt = $db_obj->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
   if(isset($_POST["id"])) {
     $sqlDelete = "DELETE FROM news WHERE id = ?";
@@ -13,9 +15,8 @@
   }
 
   $noNews = 1;
-
   
-  while ($row = $result->fetch_array()) {
+  while ($row = $result->fetch_assoc()) {
     echo '<div class = "newsBeitrag">';
     echo '<img src="/DOCUMENT_ROOT/uploads/thumbnails/thumb_'. preg_replace('/\s+/', '', $row["Titel"]) .'.jpeg" class="thumbnail">';
     echo '<h4 class="newsHeadline">'.$row["Titel"].'</h4>';
@@ -38,5 +39,5 @@
     echo "<p>Es gibt leider keine Artikel!</p>";
   }
 
-
+  $stmt->close();
 ?>
