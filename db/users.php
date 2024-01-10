@@ -4,6 +4,7 @@
 
 if(isset($_POST["userBearbeiten"])){
     $_SESSION["userBearbeiten"] = $_POST["userBearbeiten"];
+    $_SESSION["selectedUser"] = $_POST['Username'];
 }
 
 
@@ -16,7 +17,7 @@ if(isset($_POST["changeType"])) {
   $sql = "SELECT id, Username, Passwort, Anrede, Vorname, Nachname, Email, Newsletter, aktiv FROM users";
   $result = $db_obj->query($sql);
   while ($row = $result->fetch_array()) { 
-    if(isset($_SESSION["userBearbeiten"]) && $_SESSION["userBearbeiten"] == 1 && ((isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]) || (isset($_SESSION["Username"]) && $_SESSION["Username"] == $row["Username"]))) {
+    if(isset($_SESSION["userBearbeiten"]) && $_SESSION["userBearbeiten"] == 1 && ((isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]) || (isset($_SESSION["selectedUser"] ) && $_SESSION["selectedUser"] == $row["Username"]))) {
         $_SESSION["Vorname"] = $row["Vorname"];
         $_SESSION["Nachname"] = $row["Nachname"];
         echo  '<form action="db/checkprofilbearbeiten.php" method="post">';
@@ -88,7 +89,6 @@ if(isset($_POST["changeType"])) {
         <input
             type="password"
             name="passwort1"
-            
             required
         />
         </div>';

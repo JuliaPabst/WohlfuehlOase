@@ -45,7 +45,7 @@
     </div>
     <?php
       if(isset($_SESSION["emailVergleich"]) && ($_SESSION["emailVergleich"] == 0)){
-          echo "<label style='font-weight: 600;'>Das war keine gültige Email-Adresse!</label>";
+          echo "<label style='font-weight: 600;'>Geben Sie eine gültige Email-Adresse ein!</label>";
         }
     ?>
     <div>
