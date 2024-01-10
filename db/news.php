@@ -2,8 +2,17 @@
 <?php
   require("dbaccess.php");
 
-  $sql = "SELECT Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
+  $sql = "SELECT id, Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
   $result = $db_obj->query($sql);
+
+  if(isset($_POST["id"])) {
+    $sqlDelete = "DELETE FROM news WHERE id = ?";
+      $stmt = $db_obj->prepare($sqlDelete);
+      $stmt->bind_param("i", $_POST["id"]);
+      $stmt->execute();
+  }
+
+  $noNews = 1;
 
   
   while ($row = $result->fetch_array()) {
@@ -14,6 +23,20 @@
     echo '<p style="font-weight: 600;">'.$row["Lead"].'</p>';
     echo '<p>'.$row["Textfeld"].'</p>';
     echo '</div>';
-    
+
+    if(isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] == 1){
+      echo '<form action="index.php?site=news" method="POST" style="text-align: center;">
+        <input name="id" value="'.$row['id'].'" hidden>
+        <button type="submit style="margin: auto; display: block;">Löschen</button>
+        </form>';
+    }
+
+    $noNews = 0;
   } 
+
+  if($noNews == 1){
+    echo "<p>Es gibt leider keine Artikel!</p>";
+  }
+
+
 ?>

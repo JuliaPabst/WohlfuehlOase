@@ -114,7 +114,19 @@
   }
 
   if($_GET['site'] == "CMS"){
-    include 'cms/cms.php';
+    if(!isset($_SESSION["anmeldeStatus"]) || $_SESSION["anmeldeStatus"] != 1){
+      echo "<p>Melden Sie sich bitte als Admin an, um auf das CMS zugreifen zu können!</p>";
+    } else {
+      include 'cms/cms.php';
+    }
+  }
+
+  if($_GET['site'] == "cms"){
+    if(!isset($_SESSION["anmeldeStatus"]) || $_SESSION["anmeldeStatus"] != 1){
+      echo "<p>Melden Sie sich bitte als Admin an, um auf das CMS zugreifen zu können!</p>";
+    } else {
+      include 'cms/cms.php';
+    }
   }
 
   if($_GET['site'] == "news"){
