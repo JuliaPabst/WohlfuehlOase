@@ -33,6 +33,7 @@
     unset($_SESSION["Nachname"]);
     unset($_SESSION["Rolle"]);
     unset($_SESSION["bereitsAccount"]);
+    unset($_SESSION["selectedUser"]);
   }
 
  

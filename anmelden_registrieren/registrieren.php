@@ -28,7 +28,7 @@
       <input
         type="text"
         name="vorname"
-        <?php if($_SESSION["Vorname"]){
+        <?php if(isset($_SESSION["Vorname"])){
           echo 'value="'.$_SESSION["Vorname"].'"';
         } else {
          echo 'placeholder="Vorname"';
@@ -47,7 +47,7 @@
       <input
         type="text"
         name="nachname"
-        <?php if($_SESSION["Nachname"]){
+        <?php if(isset($_SESSION["Nachname"])){
           echo 'value="'.$_SESSION["Nachname"].'"';
         } else {
          echo 'placeholder="Nachname"';
@@ -68,7 +68,7 @@
       <input
         type="email"
         name="email"
-        <?php if($_SESSION["Email"]){
+        <?php if(isset($_SESSION["Email"])){
           echo 'value="'.$_SESSION["Email"].'"';
         } else {
          echo 'placeholder="E-Mail"';
@@ -82,7 +82,7 @@
       <input
         type="text"
         name="username"
-        <?php if($_SESSION["Username"]){
+        <?php if(isset($_SESSION["Username"])){
           echo 'value="'.$_SESSION["Username"].'"';
         } else {
          echo 'placeholder="Username"';

@@ -11,8 +11,9 @@
   $sql = "SELECT Username, Passwort, Vorname, Nachname FROM users";
   $result = $db_obj->query($sql);
 
-  if(isset($_POST["changeType"]) && $_POST["changeType"]=="user"){
+  if(isset($_SESSION["changeType"]) && $_SESSION["changeType"]=="user"){
     while ($row = $result->fetch_array()) { 
+      
       if($_POST["username"] == $row['Username'] && $row['Username'] != $_SESSION['usernameLoggedIn']){
           $_SESSION["bereitsAccount"] = 0; 
           $redirectToProfilBearbeiten = 1;
@@ -106,7 +107,7 @@
   
   if($redirectToProfilBearbeiten == 0){
     if(isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "user"){
-      require("dbaccess.php");
+      // Prepared Statement verwenden, um SQL-Injections zu vermeiden
       $sql = "UPDATE users SET Username = ?, Passwort = ?, Vorname = ?, Nachname = ?, Anrede = ?, Email = ?, Newsletter = ? WHERE Username = ?";
       $stmt = $db_obj->prepare($sql);
       $stmt->bind_param("ssssssis", $_SESSION["Username"], $_SESSION["Passwort"], $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["Anrede"], $_SESSION["Email"], $_SESSION["Newsletter"], $_SESSION["usernameLoggedIn"]);
@@ -124,6 +125,7 @@
       header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit; 
     } else if (isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "admin"){
+      // Prepared Statement verwenden, um SQL-Injections zu vermeiden
       $sql = "UPDATE users SET Username = ?, Passwort = ?, Vorname = ?, Nachname = ?, Anrede = ?, Email = ?, Newsletter = ?, aktiv = ? WHERE Username = ?";
       $stmt = $db_obj->prepare($sql);
       $stmt->bind_param("ssssssiss", $_SESSION["Username"], $_SESSION["Passwort"], $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["Anrede"], $_SESSION["Email"], $_SESSION["Newsletter"], $_SESSION["aktiv"], $_SESSION["usernameLoggedIn"]);
@@ -145,6 +147,7 @@
   } else {
     if(isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "user"){
       $_SESSION["userBearbeiten"] = 1;
+      echo $_SESSION["userBearbeiten"]; 
       header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit;
     } else {
