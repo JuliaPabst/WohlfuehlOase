@@ -2,6 +2,15 @@
 
 <?php 
 
+if(isset($_POST["BuchungsstatusÄndern"])){
+    require("dbaccess.php");
+    $sqlBuchung = "UPDATE buchungen SET Buchungsstatus = ? WHERE id = ?";
+    $stmtBuchung = $db_obj->prepare($sqlBuchung);
+    $stmtBuchung->bind_param("sd", $_POST["Buchungsstatus"], $_POST["BuchungsId"]);
+    $stmtBuchung ->execute();
+    $stmtBuchung->close();
+}
+
 if(isset($_POST["userBearbeiten"])){
     $_SESSION["userBearbeiten"] = $_POST["userBearbeiten"];
     $_SESSION["selectedUser"] = $_POST['Username'];
@@ -143,7 +152,7 @@ if(isset($_POST["changeType"])) {
 
         if(isset($_POST["buchungenAnzeigen"]) && isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]){
             $counter = 0;
-            $stmt1 = $db_obj->prepare("SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
+            $stmt1 = $db_obj->prepare("SELECT id, Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
             $stmt1->execute();
             $result1 = $stmt1->get_result();
             $keineBuchungen = 1; 
@@ -208,7 +217,25 @@ if(isset($_POST["changeType"])) {
                   }
                     echo '<div class="row first-row">
                     <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
-                    <div class="col-6 px-0"><p>'.$row["Buchungsstatus"].'</p></div>
+                    
+                    <div class="col-6 px-0"><p>
+                    <form action="index.php?site=users" method="POST" style="background-color: #e6e6e6;">
+                        <select name="Buchungsstatus" required>
+                            <option disabled selected>Bitte auswählen</option>
+                            <option value="neu"'; 
+                            if($row["Buchungsstatus"] == "neu"){echo 'selected';}
+                            echo '>neu</option>
+                            <option value="bestätigt" '; 
+                            if($row["Buchungsstatus"] == "bestätigt"){echo 'selected';}
+                            echo '>bestätigt</option>
+                            <option value="storniert"'; 
+                            if($row["Buchungsstatus"] == "storniert"){echo 'selected';}
+                            echo '>storniert</option>
+                        </select>
+                        <input name="BuchungsstatusÄndern" hidden>
+                        <input name="BuchungsId" value='.$row["id"].' hidden>
+                        <button type="submit">Buchungsstatus ändern</button>
+                    </form></p></div>
                     </div>';    
                     echo '</div>'; 
                 }   

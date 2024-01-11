@@ -7,7 +7,7 @@
 
 
   require("dbaccess.php");
-
+  // Prepared Statement verwenden, um SQL-Injections zu vermeiden
   $stmt = $db_obj->prepare("SELECT Username, Passwort, Vorname, Nachname FROM users WHERE Username = ?");
   $stmt->bind_param("s", $_POST['username']);
   $stmt->execute();
@@ -121,6 +121,7 @@
       $stmt = $db_obj->prepare($sql2);
       $stmt->bind_param("ssss", $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["alterVorname"], $_SESSION["alterNachname"]);
       $stmt->execute();
+      $stmt2->close();
       $_SESSION['usernameLoggedIn'] = $_POST["username"];
       $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
       
@@ -144,6 +145,7 @@
       $_SESSION["Nachname"] = "Hotel";
       $_SESSION["Vorname"] = "Admin";
       resetVergleiche();
+      $stmt2->close();
       header('Location: /DOCUMENT_ROOT/index.php?site=users');
       exit; 
     }

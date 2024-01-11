@@ -21,7 +21,7 @@
     $Parkplatz = $_SESSION["Parkplatz"];
     $Haustier = $_SESSION["Haustier"];
     $HaustierInfo = $_SESSION["InfosHaustier"];
-    $Buchungsstatus = "In Bearbeitung";
+    $Buchungsstatus = "neu";
     $Datum = date("Y-m-d H:i:s", time());
  
     $_SESSION["schonAusgebucht"] = 0;
