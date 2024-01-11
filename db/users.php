@@ -19,6 +19,8 @@ if(isset($_POST["changeType"])) {
   $stmt->execute();
   $result = $stmt->get_result();
   while ($row = $result->fetch_assoc()) { 
+    $Vorname = $row["Vorname"];
+    $Nachname = $row["Nachname"];
     if(isset($_SESSION["userBearbeiten"]) && $_SESSION["userBearbeiten"] == 1 && ((isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]) || (isset($_SESSION["selectedUser"] ) && $_SESSION["selectedUser"] == $row["Username"]))) {
         $_SESSION["Vorname"] = $row["Vorname"];
         $_SESSION["Nachname"] = $row["Nachname"];
@@ -138,6 +140,98 @@ if(isset($_POST["changeType"])) {
         <input name="userBearbeiten" value="1" hidden>
         <button type="submit">Bearbeiten</button>
         </form>';
+
+        if(isset($_POST["buchungenAnzeigen"]) && isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]){
+            $counter = 0;
+            $stmt1 = $db_obj->prepare("SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
+            $stmt1->execute();
+            $result1 = $stmt1->get_result();
+            $keineBuchungen = 1; 
+
+            while ($row = $result1->fetch_assoc()) {
+                if(($row["Vorname"] == $Vorname && $row["Nachname"] == $Nachname)){
+                  $counter = $counter + 1;  
+                  $keineBuchungen = 0;
+                  echo '<h3>Buchung '.$counter.'</h3>';
+                  echo '<p>'.$row["Datum"].'</p>';
+                  echo '<div class="container-fluid">';
+                  if($_SESSION["Vorname"] == "Hotel" && $_SESSION["Nachname"] == "Admin"){
+                    echo '<div class="row first-row">
+                    <div class="col-sm-6 px-0"><p>Vorname:</p></div>
+                    <div class="col-sm-6 px-0"><p>'.$row["Vorname"].'</p></div>
+                    </div>';
+                    echo '<div class="row first-row">
+                    <div class="col-sm-6 px-0"><p>Nachname:</p></div>
+                    <div class="col-sm-6 px-0"><p>'.$row["Nachname"].'</p></div>
+                    </div>';
+                  }
+                  echo '<div class="row first-row">
+                  <div class="col-6 px-0 "><p>Anreise:</p></div>
+                  <div class="col-6 px-0 "><p>'.$row["Anreise"].'</p></div>
+                  </div>';
+                  echo '<div class="row first-row">
+                  <div class="col-6 px-0"><p>Abreise:</p></div>
+                  <div class="col-6 px-0"><p>'.$row["Abreise"].'</p></div>
+                    </div>';
+                  if($row["Frühstück"] == 1){
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
+                    <div class="col-6 px-0"><p>ja</p></div>
+                    </div>';
+                  } else {
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
+                    <div class="col-6 px-0"><p>nein</p></div>
+                    </div>';
+                  }
+                  if($row["Parkplatz"] == 1){
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
+                    <div class="col-6 px-0"><p>ja</p></div>
+                    </div>';
+                  } else {
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
+                    <div class="col-6 px-0"><p>nein</p></div>
+                    </div>';
+                  }
+                  if($row["Haustier"] == 1){
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Haustier:</p></div>
+                    <div class="col-6 px-0"><p>ja</p></div>
+                    </div>';
+                  } else {
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Mit Haustier:</p></div>
+                    <div class="col-6 px-0"><p>nein</p></div>
+                    </div>';
+                  }
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
+                    <div class="col-6 px-0"><p>'.$row["Buchungsstatus"].'</p></div>
+                    </div>';    
+                    echo '</div>'; 
+                }   
+        }
+
+        if($keineBuchungen == 1){
+            echo "<p>Es gibt keine Buchungen unter diesem Namen!</p>";
+        }
+
+        echo '<form action="index.php?site=users" method="POST">
+            <input name="buchungenVerbergen" hidden>
+            <button type="submit">Buchungen verbergen</button>
+            </form>';
+        }  else {
+            echo '<form action="index.php?site=users" method="POST">
+            <input name="buchungenAnzeigen" value="1" hidden>
+            <input name="Username" value="'.$row['Username'].'" hidden>
+            <button type="submit">Buchungen anzeigen</button>
+            </form>';
+        }
+      
+       
     }
   } 
+  $stmt->close();
 ?>
