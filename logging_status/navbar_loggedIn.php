@@ -1,5 +1,5 @@
 <header> 
- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+ <nav class="navbar navbar-expand-xl bg-body-tertiary">
     <div class="container-fluid">
       <div class="header_logo d-flex justify-content-center">
         <a href="/DOCUMENT_ROOT/index.php?site=homepage">
@@ -12,25 +12,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            Hallo, <?php echo $_SESSION["Vorname"]?>!
+          <a class="nav-link navigation-link" style="font-size: 25px" href="#">Hallo, <?php echo $_SESSION["Vorname"]?>!</a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
+            <a class="nav-link navigation-link" style="font-size: 25px" href="/DOCUMENT_ROOT/index.php?site=help">Hilfe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=news">News</a>
+            <a class="nav-link navigation-link" style="font-size: 25px" href="/DOCUMENT_ROOT/index.php?site=news">News</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle navigation-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle navigation-link" style="font-size: 25px" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Reservierungen
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item navigation-link" href="/DOCUMENT_ROOT/index.php?site=gebucht">Gebuchte Reservierungen</a></li>
-              <li><a class="dropdown-item navigation-link" href="/DOCUMENT_ROOT/index.php?site=neueReservierung">Neue Reservierung</a></li>
+              <li><a class="dropdown-item navigation-link" style="font-size: 25px" href="/DOCUMENT_ROOT/index.php?site=gebucht">Gebuchte Reservierungen</a></li>
+              <li><a class="dropdown-item navigation-link" style="font-size: 25px" href="/DOCUMENT_ROOT/index.php?site=neueReservierung">Neue Reservierung</a></li>
             </ul>
           </li>
           <li class="nav-item">
-          <a class="nav-link navigation-link" href="/DOCUMENT_ROOT/index.php?site=profil">Profil bearbeiten</a>
+          <a class="nav-link navigation-link" style="font-size: 25px" href="/DOCUMENT_ROOT/index.php?site=profil">Profil bearbeiten</a>
           </li>  
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

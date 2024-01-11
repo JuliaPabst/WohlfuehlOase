@@ -3,15 +3,9 @@
 
     $redirectToCMS = 0; 
 
-    if(!isset($_POST["anrede"]) || !($_POST["anrede"] == "Frau" || $_POST["anrede"] == "Herr" || $_POST["anrede"] == "Keine Anrede")) {
-        
-    } else {
-        $_SESSION["anredeVergleich"] = 1;
-    }
-
     if(!isset($_POST["titel"]) || $_POST["titel"] == ""){
         $_SESSION["titelVergleich"] = 0;
-        $redirectToRegister = 1;
+        $redirectToCMS = 1;
     } else {
         $_SESSION["titelVergleich"] = 1;
         $_SESSION["Titel"] = $_POST["titel"];
@@ -19,7 +13,7 @@
 
     if(!isset($_POST["lead"]) || $_POST["lead"] == ""){
         $_SESSION["leadVergleich"] = 0;
-        $redirectToRegister = 1;
+        $redirectToCMS = 1;
     } else {
         $_SESSION["leadVergleich"] = 1;
         $_SESSION["Lead"] = $_POST["lead"];
@@ -27,15 +21,15 @@
 
     if(!isset($_POST["text"]) || $_POST["text"] == ""){
         $_SESSION["textVergleich"] = 0;
-        $redirectToRegister = 1;
+        $redirectToCMS = 1;
     } else {
         $_SESSION["textVergleich"] = 1;
         $_SESSION["Textfeld"] = $_POST["text"];
     }
 
-    if(!isset($_FILES["thumbnail"])){
+    if($_FILES["thumbnail"]["error"] != 0){
         $_SESSION["thumbnailVergleich"] = 0;
-        $redirectToRegister = 1;
+        $redirectToCMS = 1;
     } else {
         $_SESSION["thumbnailVergleich"] = 1;
         if(isset($_POST["titel"])){
@@ -44,7 +38,7 @@
     }
 
     // save Thumbnail 
-    if(isset($_FILES["thumbnail"])){
+    if($_FILES["thumbnail"]["error"] == 0){
         if($_FILES["thumbnail"]["type"] == "image/jpeg"){
             $imageName = $pictureTitle.".jpeg";
             $_SESSION["Bild"] = $imageName;
@@ -83,13 +77,18 @@
             // Free up memory
             imagedestroy($originalImage);
             imagedestroy($thumbnailImage);
-        }
+        } 
+    } else {
+        $_SESSION["thumbnailVergleich"] = 0;
+        $redirectToCMS = 1;
     }
     
     if($redirectToCMS == 1){
+        echo "redirected to cms";
         header('Location: /DOCUMENT_ROOT/index.php?site=cms');
         exit;
     } else {
+        echo "redirected to db";
         header('Location: /DOCUMENT_ROOT/db/dbcms.php');
         exit;
     } 

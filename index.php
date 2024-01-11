@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet0.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet.css" />
   </head>
   <body>
    
@@ -33,7 +33,9 @@
     unset($_SESSION["Nachname"]);
     unset($_SESSION["Rolle"]);
     unset($_SESSION["bereitsAccount"]);
+    unset($_SESSION["emailVergleich"]);
     unset($_SESSION["selectedUser"]);
+    unset($_SESSION["userBearbeiten"]);
   }
 
  

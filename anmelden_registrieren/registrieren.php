@@ -1,14 +1,13 @@
 <form action = "db/checkregistrieren.php" method = "post" class="registrierung-wrapping">
   <fieldset>
     <legend>Registrierung</legend>
+
     <?php
-      if(isset($_SESSION["bereitsAccount"]) && $_SESSION["bereitsAccount"] == 1){
-        echo "<label style='font-weight: 600;'>Dieser Username ist leider bereits vergeben!</label>";
-      }
       if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Wählen Sie eine Anrede!</label>";
         }
     ?>
+
     <div>
       <label for="anrede">Anrede:</label>
       <select name="anrede" required>
@@ -18,11 +17,13 @@
         <option value="Keine Anrede">Keine Anrede</option>
       </select>
     </div>
+
     <?php
       if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Vornamen ohne Sonderzeichen ein!</label>";
         }
     ?>
+
     <div>
       <label for="vorname">Vorname:</label>
       <input
@@ -37,11 +38,13 @@
         required
       />
     </div>
+
     <?php
       if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Nachnamen ohne Sonderzeichen ein!</label>";
         }
     ?>
+
     <div>
       <label for="nachname">Nachname:</label>
       <input
@@ -77,6 +80,13 @@
         required
       />
     </div>
+
+    <?php
+      if(isset($_SESSION["bereitsAccount"]) && $_SESSION["bereitsAccount"] == 1){
+        echo "<label style='font-weight: 600;'>Dieser Username ist leider bereits vergeben!</label>";
+      }
+    ?>
+
     <div>
       <label for="username">Username:</label>
       <input
@@ -122,14 +132,9 @@
     </div>
     <div>
       <input type="checkbox" name="AGB" value="AGB" class="checkbox" required/>
-      <label
-        >Ich habe die
-        <a
-          href="https://www.wko.at/branchen/tourismus-freizeitwirtschaft/hotellerie/AGBH_061115.pdf"
-          >AGB</a
-        >
-        gelesen!</label
-      >
+      <label>Ich habe die
+        <a href="https://www.wko.at/branchen/tourismus-freizeitwirtschaft/hotellerie/AGBH_061115.pdf">AGB</a>
+      gelesen!</label>
     </div>
     <button type="submit" class="submit-button">Senden</button>
   </fieldset>

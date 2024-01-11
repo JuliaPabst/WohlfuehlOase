@@ -84,5 +84,4 @@
     header('Location: /DOCUMENT_ROOT/db/dbregistrieren.php');
     exit;
   } 
-  
 ?>
