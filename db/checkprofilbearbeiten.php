@@ -138,7 +138,7 @@
       
       resetVergleiche();
       echo "db";
-      // header('Location: /DOCUMENT_ROOT/index.php?site=profil');
+      header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit; 
     } else if (isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "admin"){
       // Prepared Statement verwenden, um SQL-Injections zu vermeiden
@@ -166,7 +166,7 @@
   } else {
     if(isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "user"){
       $_SESSION["userBearbeiten"] = 1;
-      // header('Location: /DOCUMENT_ROOT/index.php?site=profil');
+      header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit;
     } else {
 

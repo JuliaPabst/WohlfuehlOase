@@ -152,7 +152,7 @@ if(isset($_POST["changeType"])) {
 
         if(isset($_POST["buchungenAnzeigen"]) && isset($_POST["Username"]) && $_POST["Username"] == $row["Username"]){
             $counter = 0;
-            $stmt1 = $db_obj->prepare("SELECT id, Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
+            $stmt1 = $db_obj->prepare("SELECT id, Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum, Preis FROM buchungen");
             $stmt1->execute();
             $result1 = $stmt1->get_result();
             $keineBuchungen = 1; 
@@ -237,6 +237,10 @@ if(isset($_POST["changeType"])) {
                         <button type="submit">Buchungsstatus ändern</button>
                     </form></p></div>
                     </div>';    
+                    echo '<div class="row first-row">
+                    <div class="col-6 px-0"><p>Preis:</p></div>
+                    <div class="col-6 px-0"><p>'.$row["Preis"].'€</p></div>
+                    </div>';  
                     echo '</div>'; 
                 }   
         }

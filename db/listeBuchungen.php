@@ -3,7 +3,7 @@
   $counter = 0;
   require("dbaccess.php");
 
-  $stmt = $db_obj->prepare("SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum FROM buchungen");
+  $stmt = $db_obj->prepare("SELECT Vorname, Nachname, Anreise, Abreise, Frühstück, Haustier, Haustierinfo, Buchungsstatus, Parkplatz, Datum, Preis FROM buchungen");
   $stmt->execute();
   $result = $stmt->get_result();
 
@@ -67,6 +67,12 @@
         echo '<div class="row first-row">
         <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
         <div class="col-6 px-0"><p>'.$row["Buchungsstatus"].'</p></div>
+        </div>';    
+        echo '</div>'; 
+
+        echo '<div class="row first-row">
+        <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
+        <div class="col-6 px-0"><p>'.$row["Preis"].'€</p></div>
         </div>';    
         echo '</div>'; 
         
