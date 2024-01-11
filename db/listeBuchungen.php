@@ -8,7 +8,7 @@
   $result = $stmt->get_result();
 
   while ($row = $result->fetch_assoc()) {
-    if(($row["Vorname"] == $_SESSION["Vorname"] && $row["Nachname"] == $_SESSION["Nachname"])|| ($_SESSION["Vorname"] == "Hotel" && $_SESSION["Nachname"] == "Admin")){
+    if(($row["Vorname"] == $_SESSION["Vorname"] && $row["Nachname"] == $_SESSION["Nachname"])|| ($_SESSION["usernameLoggedIn"] == "hoteladmin")){
       $counter = $counter + 1;  
       echo '<h3>Buchung '.$counter.'</h3>';
       echo '<p>'.$row["Datum"].'</p>';

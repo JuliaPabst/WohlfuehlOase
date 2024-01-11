@@ -9,30 +9,42 @@
   require("dbaccess.php");
   // Prepared Statement verwenden, um SQL-Injections zu vermeiden
   $stmt = $db_obj->prepare("SELECT Username, Passwort, Vorname, Nachname FROM users WHERE Username = ?");
-  $stmt->bind_param("s", $_POST['username']);
+  $stmt->bind_param("s",  $_POST["username"] );
   $stmt->execute();
   $result = $stmt->get_result();
 
+  $alreadyAccount = false; 
+
   if(isset($_SESSION["changeType"]) && $_SESSION["changeType"]=="user"){
     while ($row = $result->fetch_assoc()) { 
-      
-      if($_POST["username"] == $row['Username'] && $row['Username'] != $_SESSION['usernameLoggedIn']){
-          $_SESSION["bereitsAccount"] = 0; 
-          $redirectToProfilBearbeiten = 1;
-          break;
-      } else {
-          $_SESSION["Username"] = $_POST["username"];
-      }
+      echo $_SESSION['usernameLoggedIn'];
+        if($_POST["username"] == $row['Username'] && $row['Username'] != $_SESSION['usernameLoggedIn']){
+            $_SESSION["bereitsAccount"] = 0; 
+            $redirectToProfilBearbeiten = 1;
+            $alreadyAccount = true;
+            $_SESSION["Username"] = $_SESSION['usernameLoggedIn'];
+            echo "gibt's schon und darf nicht nochmal";
+            break;
+        }
     }
+
+    if(!$alreadyAccount){
+        $_SESSION["Username"] = $_POST["username"];
+        echo "gibt's noch nicht";
+    }
+    
+
   } else {
     while ($row = $result->fetch_assoc()) { 
-      if($_POST["username"] == $row['Username'] && isset($_SESSION["selectedUser"]) && $_POST["username"]  != $_SESSION["selectedUser"]){
+      if(isset($_POST["username"]) &&  $_POST["username"] == $row['Username'] && isset($_SESSION["selectedUser"]) && $_SESSION["selectedUser"] != $row['Username']){
         $_SESSION["bereitsAccount"] = 0; 
         $redirectToProfilBearbeiten = 1;
-          break;
-      } else {
-          $_SESSION["Username"] = $_POST["username"];
-      }
+        break;
+      } 
+    }
+
+    if(!$alreadyAccount){
+      $_SESSION["Username"] = $_POST["username"];
     }
     $stmt->close();
     }
@@ -41,7 +53,6 @@
   if(!isset($_POST["anrede"]) || !($_POST["anrede"] == "Frau" || $_POST["anrede"] == "Herr" || $_POST["anrede"] == "Keine Anrede")) {
     $_SESSION["anredeVergleich"] = 0;
     $redirectToProfilBearbeiten = 1;
-    echo "Anrede";
   } else {
     $_SESSION["anredeVergleich"] = 1;
     $_SESSION["Anrede"] = $_POST["anrede"];
@@ -121,41 +132,46 @@
       $stmt = $db_obj->prepare($sql2);
       $stmt->bind_param("ssss", $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["alterVorname"], $_SESSION["alterNachname"]);
       $stmt->execute();
-      $stmt2->close();
+      $stmt->close();
       $_SESSION['usernameLoggedIn'] = $_POST["username"];
       $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
       
       resetVergleiche();
-      header('Location: /DOCUMENT_ROOT/index.php?site=profil');
+      echo "db";
+      // header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit; 
     } else if (isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "admin"){
       // Prepared Statement verwenden, um SQL-Injections zu vermeiden
+      echo $_SESSION["Username"];
       $sql = "UPDATE users SET Username = ?, Passwort = ?, Vorname = ?, Nachname = ?, Anrede = ?, Email = ?, Newsletter = ?, aktiv = ? WHERE Username = ?";
       $stmt = $db_obj->prepare($sql);
-      $stmt->bind_param("ssssssiss", $_SESSION["Username"], $_SESSION["Passwort"], $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["Anrede"], $_SESSION["Email"], $_SESSION["Newsletter"], $_SESSION["aktiv"], $_SESSION["usernameLoggedIn"]);
+      $stmt->bind_param("ssssssiss", $_SESSION["Username"], $_SESSION["Passwort"], $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["Anrede"], $_SESSION["Email"], $_SESSION["Newsletter"], $_SESSION["aktiv"], $_SESSION["selectedUser"]);
       $stmt->execute();
-      $_SESSION['usernameLoggedIn'] = $_POST["username"];
-      $_SESSION["passwortLoggedIn"] = $_POST["passwort1"];
+      
 
       $sql2 = "UPDATE buchungen SET Vorname = ?, Nachname = ? WHERE Vorname = ? AND Nachname = ?";
       $stmt = $db_obj->prepare($sql2);
       $stmt->bind_param("ssss", $_SESSION["Vorname"], $_SESSION["Nachname"], $_SESSION["alterVorname"], $_SESSION["alterNachname"]);
       $stmt->execute();
-
+      
+      resetVergleiche();
       $_SESSION["Nachname"] = "Hotel";
       $_SESSION["Vorname"] = "Admin";
-      resetVergleiche();
-      $stmt2->close();
+      $_SESSION['usernameLoggedIn'] = "hoteladmin";
+      $_SESSION["passwortLoggedIn"] = "1234";
+      echo "db";
       header('Location: /DOCUMENT_ROOT/index.php?site=users');
       exit; 
     }
   } else {
     if(isset($_SESSION["changeType"]) && $_SESSION["changeType"] == "user"){
       $_SESSION["userBearbeiten"] = 1;
-      header('Location: /DOCUMENT_ROOT/index.php?site=profil');
+      // header('Location: /DOCUMENT_ROOT/index.php?site=profil');
       exit;
     } else {
+
       $_SESSION["userBearbeiten"] = 1;
+      echo "nochmal bearbeiten";
       header('Location: /DOCUMENT_ROOT/index.php?site=users');
       exit; 
     }

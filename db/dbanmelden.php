@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-        // Prepared Statement verwenden, um SQL-Injections zu vermeiden
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden
     require("dbaccess.php");
     $stmt = $db_obj->prepare("SELECT Username, Passwort, Vorname, Nachname, Anrede, Rolle, Email, Newsletter, aktiv FROM users WHERE Username = ?");
     $stmt->bind_param("s", $_POST["usernameLoggedIn"]);
@@ -13,6 +13,7 @@
             if($row["aktiv"] == "aktiv"){
                 if($_POST["usernameLoggedIn"] == "hoteladmin" && $_POST["passwortLoggedIn"] == 1234){
                     $_SESSION["anmeldeStatus"] = 1;
+                    $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
                     $_SESSION["Rolle"] = $row['Rolle'];
                     $_SESSION["Vorname"] = $row['Vorname'];
                     $_SESSION["Nachname"] = $row['Nachname'];
