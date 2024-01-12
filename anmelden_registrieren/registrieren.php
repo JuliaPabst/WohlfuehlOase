@@ -3,6 +3,7 @@
     <legend>Registrierung</legend>
 
     <?php
+    //Anzeigen, dass Anrede vergessen wurde
       if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Wählen Sie eine Anrede!</label>";
         }
@@ -19,6 +20,7 @@
     </div>
 
     <?php
+    //Anzeigen, dass kein richtiger Vorname eingegeben wurde
       if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Vornamen ohne Sonderzeichen ein!</label>";
         }
@@ -29,7 +31,9 @@
       <input
         type="text"
         name="vorname"
-        <?php if(isset($_SESSION["Vorname"])){
+        <?php 
+        // Vorname von vorherigen Submit anzeigen, wenn Registrieren gescheitert ist 
+        if(isset($_SESSION["Vorname"])){
           echo 'value="'.$_SESSION["Vorname"].'"';
         } else {
          echo 'placeholder="Vorname"';
@@ -40,7 +44,8 @@
     </div>
 
     <?php
-      if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
+    //Anzeigen, dass kein richtiger Nachname eingegeben wurde
+      if(isset($_SESSION["nachnameVergleich"]) && ($_SESSION["nachnameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Nachnamen ohne Sonderzeichen ein!</label>";
         }
     ?>
@@ -50,7 +55,9 @@
       <input
         type="text"
         name="nachname"
-        <?php if(isset($_SESSION["Nachname"])){
+        <?php 
+        // Nachname von vorherigen Submit anzeigen, wenn Registrieren gescheitert ist 
+        if(isset($_SESSION["Nachname"])){
           echo 'value="'.$_SESSION["Nachname"].'"';
         } else {
          echo 'placeholder="Nachname"';
@@ -61,6 +68,7 @@
     </div>
 
     <?php
+    //Anzeigen, dass keine richtige Email eingegeben wurde
       if(isset($_SESSION["emailVergleich"]) && ($_SESSION["emailVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Das ist keine gültige Email-Adresse!</label>";
         }
@@ -71,7 +79,9 @@
       <input
         type="email"
         name="email"
-        <?php if(isset($_SESSION["Email"])){
+        <?php 
+        // Email von vorherigen Submit anzeigen, wenn Registrieren gescheitert ist 
+        if(isset($_SESSION["Email"])){
           echo 'value="'.$_SESSION["Email"].'"';
         } else {
          echo 'placeholder="E-Mail"';
@@ -82,6 +92,7 @@
     </div>
 
     <?php
+    //Anzeigen, dass es bereits einen Account mit dem Namen gibt
       if(isset($_SESSION["bereitsAccount"]) && $_SESSION["bereitsAccount"] == 1){
         echo "<label style='font-weight: 600;'>Dieser Username ist leider bereits vergeben!</label>";
       }
@@ -92,7 +103,9 @@
       <input
         type="text"
         name="username"
-        <?php if(isset($_SESSION["Username"])){
+        <?php 
+        // Username von vorherigen Submit anzeigen, wenn Registrieren gescheitert ist 
+        if(isset($_SESSION["Username"])){
           echo 'value="'.$_SESSION["Username"].'"';
         } else {
          echo 'placeholder="Username"';
@@ -103,6 +116,7 @@
     </div>
     
     <?php
+    // Anzeigen, dass Passwörter nicht übereinstimmen 
       if(isset($_SESSION["passwortVergleich"]) && ($_SESSION["passwortVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Passwörter stimmen nicht überein!</label>";
         }
