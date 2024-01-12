@@ -1,13 +1,11 @@
 <?php 
     session_start();
 
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden  
     require("dbaccess.php");
-    
     $sql = "INSERT INTO users (id, Username, Passwort, Anrede, Vorname, Nachname, Email, Newsletter, Rolle, aktiv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
     $stmt = $db_obj->prepare($sql);
     $id = "NULL";
-    
     $stmt-> bind_param("issssssiss", $id, $Username, $Passwort, $Anrede, $Vorname, $Nachname, $Email, $Newsletter, $Rolle, $Aktiv);
   
     $Username = $_SESSION["Username"];
@@ -21,12 +19,11 @@
     $Aktiv =  "aktiv";
 
     $_SESSION["anmeldeStatus"] = 2;
-    $_SESSION["usernameLoggedIn"] = $_SESSION["Username"];
+    $_SESSION["usernameLoggedIn"] = $Username;
     $_SESSION["passwortLoggedIn"] = $_SESSION["Passwort"];
 
     $stmt->execute();
-    
-
+    $stmt->close();
     header('Location: /DOCUMENT_ROOT/index.php?site=homepage');
     exit; 
     

@@ -1,4 +1,5 @@
 <?php
+  // wenn Profil Bearbeiten Knopf gedrückt wird und Passwort korrekt ist, User Bearbeiten lassen
   if(isset($_POST["changeType"])) {
     $_SESSION["changeType"] = "user";  
     $_SESSION["userBearbeiten"] = 1;

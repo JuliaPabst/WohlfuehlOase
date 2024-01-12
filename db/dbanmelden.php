@@ -11,6 +11,7 @@
     while ($row =$result->fetch_assoc()) { 
         if($_POST["usernameLoggedIn"] == $row['Username'] && password_verify($_POST["passwortLoggedIn"], $row['Passwort'])){
             if($row["aktiv"] == "aktiv"){
+                // Session Variablen setten, wenn sich Admin anmeldet
                 if($_POST["usernameLoggedIn"] == "hoteladmin" && $_POST["passwortLoggedIn"] == 1234){
                     $_SESSION["anmeldeStatus"] = 1;
                     $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
@@ -21,7 +22,8 @@
                     $_SESSION["Anrede"] = $row['Anrede'];
                     $_SESSION["Email"] = $row['Email'];
                     $_SESSION["newsletter"] = $row['Newsletter'];
-                } else {
+                } // Session Variablen setten, wenn sich ein normaler User anmeldet
+                else {
                     $_SESSION["anmeldeStatus"] = 2;
                     $_SESSION["usernameLoggedIn"] = $_POST["usernameLoggedIn"];
                     $_SESSION["passwortLoggedIn"] = $_POST["passwortLoggedIn"];
@@ -32,6 +34,7 @@
                     $_SESSION["Email"] = $row['Email'];
                     $_SESSION["newsletter"] = $row['Newsletter'];
                 }
+                // anmeldung klappt 
                 $stmt->close();
                 header('Location: /DOCUMENT_ROOT/index.php?site=homepage');
                 exit;  
@@ -39,13 +42,9 @@
         } 
     }
 
+    // anmeldung geht schiief
     $_SESSION["anmeldeStatus"] = 0;
-
     $stmt->close();
     header('Location: /DOCUMENT_ROOT/index.php?site=anmelden');
     exit; 
-    
-  
-
-   
 ?>

@@ -1,8 +1,10 @@
 <h2>Mein Profil bearbeiten</h2>
 <form action="db/checkprofilbearbeiten.php" method="post">
-    <?php if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
+    <?php 
+    // Anrede überprüfen
+      if(isset($_SESSION["anredeVergleich"]) && ($_SESSION["anredeVergleich"] == 0)){
               echo "<label style='font-weight: 600;'>Wählen Sie eine Anrede!</label>";
-            }
+      }
     ?>
     <div>
       <label for="anrede">Anrede:</label>
@@ -14,6 +16,7 @@
       </select>
     </div>
     <?php
+      // Vorname überprüfen
       if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Vornamen ohne Sonderzeichen ein!</label>";
         }
@@ -29,7 +32,8 @@
       />
     </div>
     <?php
-      if(isset($_SESSION["vornameVergleich"]) && ($_SESSION["vornameVergleich"] == 0)){
+      // Nachname überprüfen
+      if(isset($_SESSION["nachnameVergleich"]) && ($_SESSION["nachnameVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie einen Nachnamen ohne Sonderzeichen ein!</label>";
         }
     ?>
@@ -44,6 +48,7 @@
       />
     </div>
     <?php
+      // Email überprüfen
       if(isset($_SESSION["emailVergleich"]) && ($_SESSION["emailVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Geben Sie eine gültige Email-Adresse ein!</label>";
         }
@@ -59,6 +64,7 @@
       />
     </div>
     <?php
+      // bereits Account überprüfen
       if(isset($_SESSION["bereitsAccount"]) && $_SESSION["bereitsAccount"] == 0){
         echo "<label style='font-weight: 600;'>Dieser Username ist leider bereits vergeben!</label>";
       }
@@ -74,6 +80,7 @@
       />
     </div>
     <?php
+      // überprüfen, ob Passwörter übereinstimmen
       if(isset($_SESSION["passwortVergleich"]) && ($_SESSION["passwortVergleich"] == 0)){
           echo "<label style='font-weight: 600;'>Passwörter stimmen nicht überein!</label>";
         }
@@ -103,5 +110,6 @@
       <label for="newsletter">Ich möchte mich zum Newletter anmelden!</label>
     </div>
     <input name="role" value="user" hidden>
+    <input name="aktiv" hidden> 
     <button type="submit">Senden</button>
 </form>

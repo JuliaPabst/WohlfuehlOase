@@ -1,18 +1,19 @@
 <div class = "newsBeitrag">
 <?php
   require("dbaccess.php");
-
-  $sql = "SELECT id, Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
-  $stmt = $db_obj->prepare($sql);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
+// Wenn Beitrag zum Löschen ausgewählt - Beitrag löschen
   if(isset($_POST["id"])) {
     $sqlDelete = "DELETE FROM news WHERE id = ?";
       $stmt = $db_obj->prepare($sqlDelete);
       $stmt->bind_param("i", $_POST["id"]);
       $stmt->execute();
   }
+
+  // Prepared Statement verwenden, um SQL-Injections zu vermeiden 
+  $sql = "SELECT id, Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
+  $stmt = $db_obj->prepare($sql);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
   $noNews = 1;
   
@@ -25,13 +26,13 @@
     echo '<p>'.$row["Textfeld"].'</p>';
     echo '</div>';
 
-    if(isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] == 1){
+    // Wenn Admin angemeldet ist, Beitrag löschbar 
+    if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION['usernameLoggedIn'] == "hoteladmin"){
       echo '<form action="index.php?site=news" method="POST" style="text-align: center;">
         <input name="id" value="'.$row['id'].'" hidden>
         <button type="submit style="margin: auto; display: block;">Löschen</button>
         </form>';
     }
-
     $noNews = 0;
   } 
 

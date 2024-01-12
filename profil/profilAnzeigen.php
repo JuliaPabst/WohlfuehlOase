@@ -12,22 +12,23 @@
 </form>
 
 <?php
-if(isset($_POST["bearbeiten"])){
-    echo '
-    <form action="index.php?site=profil" method="post">
-        <div>';
-    if(isset($_SESSION["passwortCheckProfil"]) && $_SESSION["passwortCheckProfil"] == 0){
-        echo "<div><label style='font-weight: 600;'>Falsches Passwort!</label></div>";
+    // checken, ob Profil bearbeiten angeklickt wurde 
+    if(isset($_POST["bearbeiten"])){
+        echo '
+        <form action="index.php?site=profil" method="post">
+            <div>';
+        if(isset($_SESSION["passwortCheckProfil"]) && $_SESSION["passwortCheckProfil"] == 0){
+            echo "<div><label style='font-weight: 600;'>Falsches Passwort!</label></div>";
+        }
+        echo '<label for="passwortLoggedIn">Passwort:</label>
+            <input 
+            type="password"
+            name="passwortLoggedIn"
+            />
+            <input name="bearbeiten" value="ja" hidden>
+            </div>
+            <input name="changeType" value="user" hidden>
+            <button type="submit">Senden</button>
+        </form>';
     }
-    echo '<label for="passwortLoggedIn">Passwort:</label>
-        <input 
-        type="password"
-        name="passwortLoggedIn"
-        />
-        <input name="bearbeiten" value="ja" hidden>
-        </div>
-        <input name="changeType" value="user" hidden>
-        <button type="submit">Senden</button>
-    </form>';
-}
 ?>

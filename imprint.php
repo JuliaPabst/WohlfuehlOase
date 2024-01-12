@@ -50,17 +50,17 @@
                         <div class='col-sm-3'></div>
                         <div class='col-sm-3'>
                             <div class='card'>
-                                <img src="./res/img/amanda.jpg" alt="Amanda"></a>
+                                <img src="./res/img/amanda.jpg" alt="Julia"></a>
                                 <div class='card-body board'>
-                                    <p class='card-text navcenter'>Amanda Young</p>
+                                    <p class='card-text navcenter'>Julia Pabst</p>
                                 </div>
                             </div>
                         </div>
                         <div class='col-sm-3'>
                             <div class='card'>
-                                <img src="./res/img/john.jpg" alt="John"></a>
+                                <img src="./res/img/john.jpg" alt="Sofia"></a>
                                 <div class='card-body board'>
-                                    <p class='card-text navcenter'>John Kramer</p>
+                                    <p class='card-text navcenter'>Sofia Ginalis</p>
                                 </div>
                             </div>
                         </div>
