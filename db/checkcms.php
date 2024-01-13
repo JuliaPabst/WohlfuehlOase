@@ -36,14 +36,18 @@
         $redirectToCMS = 1;
     } else {
         $_SESSION["thumbnailVergleich"] = 1;
-        if(isset($_POST["titel"])){
-            $pictureTitle = preg_replace('/\s+/', '', $_POST["titel"]);
-        }
     }
 
     // Thumbnail abspeichern 
-    if($_FILES["thumbnail"]["error"] == 0){
-        if($_FILES["thumbnail"]["type"] == "image/jpeg"){
+    if($_FILES["thumbnail"]["error"] != 0 || $_FILES["thumbnail"]["type"] != "image/jpeg"){
+        $_SESSION["thumbnailVergleich"] = 0;
+        $redirectToCMS = 1;
+    } else {
+        $_SESSION["thumbnailVergleich"] = 1;
+        if(isset($_POST["titel"])){
+            $pictureTitle =  $pictureTitle = md5($_POST["titel"]);
+            
+
             //Bildnamen definieren aus dem Titel des Artikels und .jpeg
             $imageName = $pictureTitle.".jpeg";
             $_SESSION["Bild"] = $imageName;
@@ -51,41 +55,38 @@
             
             $destinationServer = str_replace("db", "", getcwd() . "uploads\\" . $imageName);
             move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $destinationServer);
-            
-            // Thumbnail erstellen
-            $thumbnailFilename = "thumb_" . $imageName;
-            $thumbnailDestination = str_replace("db", "", getcwd() . "\\uploads\\thumbnails\\" . $thumbnailFilename);
-            $urlPathThumbnail = '/DOCUMENT_ROOT/uploads/thumbnails/' . $thumbnailFilename;
 
-            // Größe von Thumbnail anpassen
-            list($originalWidth, $originalHeight) = getimagesize($destinationServer);
-            $thumbnailWidth = 720;
-            $thumbnailHeight = 480;
-            $originalImage = imagecreatefromjpeg($destinationServer);
-            $thumbnailImage = imagecreatetruecolor($thumbnailWidth, $thumbnailHeight);
-    
-            imagecopyresampled(
-                $thumbnailImage,
-                $originalImage,
-                0,
-                0,
-                0,
-                0,
-                $thumbnailWidth,
-                $thumbnailHeight,
-                $originalWidth,
-                $originalHeight
-            );
-    
-            imagejpeg($thumbnailImage, $thumbnailDestination);
-    
-            // Memory befreien 
-            imagedestroy($originalImage);
-            imagedestroy($thumbnailImage);
-        } 
-    } else {
-        $_SESSION["thumbnailVergleich"] = 0;
-        $redirectToCMS = 1;
+             // Thumbnail erstellen
+             $thumbnailFilename = "thumb_" . $imageName;
+             $thumbnailDestination = str_replace("db", "", getcwd() . "\\uploads\\thumbnails\\" . $thumbnailFilename);
+             $urlPathThumbnail = '/DOCUMENT_ROOT/uploads/thumbnails/' . $thumbnailFilename;
+ 
+             // Größe von Thumbnail anpassen
+             list($originalWidth, $originalHeight) = getimagesize($destinationServer);
+             $thumbnailWidth = 720;
+             $thumbnailHeight = 480;
+             $originalImage = imagecreatefromjpeg($destinationServer);
+             $thumbnailImage = imagecreatetruecolor($thumbnailWidth, $thumbnailHeight);
+     
+             imagecopyresampled(
+                 $thumbnailImage,
+                 $originalImage,
+                 0,
+                 0,
+                 0,
+                 0,
+                 $thumbnailWidth,
+                 $thumbnailHeight,
+                 $originalWidth,
+                 $originalHeight
+             );
+     
+             imagejpeg($thumbnailImage, $thumbnailDestination);
+     
+             // Memory befreien 
+             imagedestroy($originalImage);
+             imagedestroy($thumbnailImage);
+        }
     }
     
     if($redirectToCMS == 1){

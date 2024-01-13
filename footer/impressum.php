@@ -1,6 +1,6 @@
 
 <main id="impressum-main">
-  <h1>Impressum</h1>
+  <h1 id="h1-impressum">Impressum</h1>
   <h2>Wohlfühloase GmbH</h2>
   <p>Gesellschaft mit beschränkter Haftung</p>
   <p>Hotellerie</p>
@@ -27,10 +27,12 @@
   <p>Magistratisches Bezirksamt für den 2. und 20. Bezirk Wien</p>
   <br />
   <h3>Geschäftsführer:innen:</h3>
+  <div>
   <img src="pictures/geschaeftsfuehrung/sofia.gif" alt="Sofia Ginalis" class="geschäftsführung"/>
   <p>Sofia Ginalis</p>
   <img src="pictures/geschaeftsfuehrung/jules.gif" alt="Julia Pabst" class="geschäftsführung" />
   <p>Julia Pabst</p>
+  </div>
   <p>Wirtschafter:in in Gastronomie und Hotellerie</p>
   <p>Gesellschaftsanteile: Sofia Ginalis (50%), Julia Pabst (50%)</p>
   <br />

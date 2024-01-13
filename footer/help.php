@@ -1,11 +1,13 @@
 <h1 id="hilfe">Hilfe</h1>
 <main id="hilfe-main">
+  <div id="hilfe-text">
   <p>
       Sie erreichen uns 24 Stunden am Tag, 7 Tage die Woche! Wir freuen uns
       auf Ihren Anruf unter der Telefonnummer : +43123456789 oder über Ihre
       E-Mail an info@wohlfuehloase.at.
   </p>
   <p>Erstellen Sie einen Account, um ein Zimmer zu buchen.</p>
+  </div>
 </main>
 <div id="FAQ-div">
     <h2 id="FAQ">FAQ</h2>
@@ -64,7 +66,7 @@
         />
       </div>
       <div>
-        <label for="E-Mail">E-Mail</label><br />
+        <label for="E-Mail">E-Mail:</label><br />
         <input
           type="text"
           name="E-Mail"
@@ -74,7 +76,7 @@
         />
       </div>
       <div>
-        <label for="Frage">Frage</label><br />
+        <label for="Frage">Frage:</label><br />
         <textarea name="Frage" id="Frage">Stellen Sie eine Frage!</textarea>
       </div>
 

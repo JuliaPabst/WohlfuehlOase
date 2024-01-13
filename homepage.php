@@ -1,7 +1,7 @@
 <section id="title">
   <div id="home-image">
     <div class="header_logo d-flex justify-content-center" id="homescreen-logo">
-          <img id="makewhite" src="/DOCUMENT_ROOT/pictures/wohlfuehloase_logo.png">
+          <img id="makewhite" src="/DOCUMENT_ROOT/pictures/wohlfuehloaseresortspagray.png" alt="Wohlfuehloase Resort & Spa Est. 2023">
     </div>
 </section>
 

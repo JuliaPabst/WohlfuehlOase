@@ -3,6 +3,7 @@
   require("dbaccess.php");
 // Wenn Beitrag zum Löschen ausgewählt - Beitrag löschen
   if(isset($_POST["id"])) {
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden 
     $sqlDelete = "DELETE FROM news WHERE id = ?";
       $stmt = $db_obj->prepare($sqlDelete);
       $stmt->bind_param("i", $_POST["id"]);
@@ -10,7 +11,7 @@
   }
 
   // Prepared Statement verwenden, um SQL-Injections zu vermeiden 
-  $sql = "SELECT id, Titel, Lead, Textfeld,Datum FROM news ORDER BY id desc";
+  $sql = "SELECT id, Titel, Lead, Textfeld,Datum, Bild FROM news ORDER BY id desc";
   $stmt = $db_obj->prepare($sql);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -19,12 +20,11 @@
   
   while ($row = $result->fetch_assoc()) {
     echo '<div class = "newsBeitrag">';
-    echo '<img src="/DOCUMENT_ROOT/uploads/thumbnails/thumb_'. preg_replace('/\s+/', '', $row["Titel"]) .'.jpeg" class="thumbnail">';
+    echo '<img src="/DOCUMENT_ROOT/uploads/thumbnails/thumb_'.$row["Bild"].'" class="thumbnail">';
     echo '<h4 class="newsHeadline">'.$row["Titel"].'</h4>';
     echo '<p style="font-weight: 600;">'.$row["Datum"].'</p>';
     echo '<p style="font-weight: 600;">'.$row["Lead"].'</p>';
     echo '<p>'.$row["Textfeld"].'</p>';
-    echo '</div>';
 
     // Wenn Admin angemeldet ist, Beitrag löschbar 
     if(isset($_SESSION["usernameLoggedIn"]) && $_SESSION['usernameLoggedIn'] == "hoteladmin"){
@@ -32,6 +32,9 @@
         <input name="id" value="'.$row['id'].'" hidden>
         <button type="submit style="margin: auto; display: block;">Löschen</button>
         </form>';
+        echo '</div>';
+    } else {
+      echo '</div>';
     }
     $noNews = 0;
   } 

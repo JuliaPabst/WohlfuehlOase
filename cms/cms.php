@@ -1,4 +1,5 @@
-<form action="db/checkcms.php" enctype="multipart/form-data" method="post">
+<main id="hilfe-main">
+  <form action="db/checkcms.php" enctype="multipart/form-data" method="post">
 
     <?php
     // Anzeigen, dass Thumbnail vergessen oder im falschen Format hochgeladen wurde 
@@ -40,5 +41,6 @@
     <label for="text">Text</label>
     <textarea name="text" required></textarea>
     <button type="submit">Senden</button>
-</form>
+  </form>
+</main>
 

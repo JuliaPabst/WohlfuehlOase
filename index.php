@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet.css" />
+    <link rel="stylesheet" href="/DOCUMENT_ROOT/stylesheet2.css" />
   </head>
   <body>
 
@@ -127,9 +127,14 @@
       include 'db/users.php';
     }
   ?>
-    <footer>
-      <a href="/DOCUMENT_ROOT/index.php?site=impressum" class="footer-link">Impressum</a>
-      <a href="/DOCUMENT_ROOT/index.php?site=help" class="footer-link">Help & FAQ</a>
+
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="/DOCUMENT_ROOT/index.php?site=homepage" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="/DOCUMENT_ROOT/index.php?site=help" class="nav-link px-2 text-body-secondary">Help & FAQ</a></li>
+        <li class="nav-item"><a href="/DOCUMENT_ROOT/index.php?site=impressum" class="nav-link px-2 text-body-secondary">Impressum</a></li>
+      </ul>
+      <p class="text-center text-body-secondary" id="footer-copyright">© 2023 Wohlfühloase, GmbH</p>
     </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
