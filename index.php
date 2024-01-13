@@ -103,6 +103,14 @@
     }
     }
 
+    if($_GET['site'] == "einzelneBuchung"){
+      if(isset($_SESSION["anmeldeStatus"]) && $_SESSION["anmeldeStatus"] != 1){
+        echo "<p>Nur Admins können einzelne Buchungen einsehen!</p>";
+      } else {
+        include 'db/einzelneBuchung.php';
+      }
+      }
+
     if($_GET['site'] == "CMS"){
       if(!isset($_SESSION["anmeldeStatus"]) || $_SESSION["anmeldeStatus"] != 1){
         echo "<p>Melden Sie sich bitte als Admin an, um auf das CMS zugreifen zu können!</p>";

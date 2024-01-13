@@ -48,61 +48,48 @@
       <div class="col-6 px-0"><p>Abreise:</p></div>
       <div class="col-6 px-0"><p>'.$row["Abreise"].'</p></div>
         </div>';
-      if($row["Frühstück"] == 1){
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
-        <div class="col-6 px-0"><p>ja</p></div>
-        </div>';
-      } else {
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
-        <div class="col-6 px-0"><p>nein</p></div>
-        </div>';
+      if($_SESSION['usernameLoggedIn'] != "hoteladmin"){
+        if($row["Frühstück"] == 1){
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
+          <div class="col-6 px-0"><p>ja</p></div>
+          </div>';
+        } else {
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Frühstück:</p></div>
+          <div class="col-6 px-0"><p>nein</p></div>
+          </div>';
+        }
+        if($row["Parkplatz"] == 1){
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
+          <div class="col-6 px-0"><p>ja</p></div>
+          </div>';
+        } else {
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
+          <div class="col-6 px-0"><p>nein</p></div>
+          </div>';
+        }
+        if($row["Haustier"] == 1){
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Haustier:</p></div>
+          <div class="col-6 px-0"><p>ja</p></div>
+          </div>';
+        } else {
+          echo '<div class="row first-row">
+          <div class="col-6 px-0"><p>Mit Haustier:</p></div>
+          <div class="col-6 px-0"><p>nein</p></div>
+          </div>';
+        }
       }
-      if($row["Parkplatz"] == 1){
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
-        <div class="col-6 px-0"><p>ja</p></div>
-        </div>';
-      } else {
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Parkplatz:</p></div>
-        <div class="col-6 px-0"><p>nein</p></div>
-        </div>';
-      }
-      if($row["Haustier"] == 1){
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Haustier:</p></div>
-        <div class="col-6 px-0"><p>ja</p></div>
-        </div>';
-      } else {
-        echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Mit Haustier:</p></div>
-        <div class="col-6 px-0"><p>nein</p></div>
-        </div>';
-      }
-
       // Buchungsstatus änderbar, wenn Admin angemeldet ist
       if($_SESSION["usernameLoggedIn"] == "hoteladmin"){
         echo '<div class="row first-row">
-        <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
         <div class="col-6 px-0"><p>
-        <form action="index.php?site=gebucht" method="POST" style="background-color: #e6e6e6;">
-            <select name="Buchungsstatus" required>
-                <option disabled selected>Bitte auswählen</option>
-                <option value="neu"'; 
-                if($row["Buchungsstatus"] == "neu"){echo 'selected';}
-                echo '>neu</option>
-                <option value="bestätigt" '; 
-                if($row["Buchungsstatus"] == "bestätigt"){echo 'selected';}
-                echo '>bestätigt</option>
-                <option value="storniert"'; 
-                if($row["Buchungsstatus"] == "storniert"){echo 'selected';}
-                echo '>storniert</option>
-            </select>
-            <input name="BuchungsstatusÄndern" hidden>
-            <input name="BuchungsId" value="'.$row["id"].'" hidden>
-            <button type="submit">Buchungsstatus ändern</button>
+        <form action="index.php?site=einzelneBuchung" method="POST" style="background-color: #e6e6e6;">
+            <input name="zuBearbeitendeBuchung" value="'.$row["id"].'" hidden>
+            <button type="submit">Details zu dieser spezifischen Buchung anzeigen</button>
         </form></p></div>
         </div>';  
       } // Buchungsstatus nicht änderbar, wenn Admin nicht angemeldet ist 
@@ -111,12 +98,13 @@
         <div class="col-6 px-0"><p>Buchungsstatus:</p></div>
         <div class="col-6 px-0"><p>'.$row["Buchungsstatus"].'</p></div>
         </div>';   
-      }
+      
         echo '<div class="row first-row">
         <div class="col-6 px-0"><p>Preis:</p></div>
         <div class="col-6 px-0"><p>'.$row["Preis"].'€</p></div>
         </div>';    
-        echo '</div>'; 
+        echo '</div>';
+      } 
     }    
   } 
 

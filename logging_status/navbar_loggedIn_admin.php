@@ -102,7 +102,7 @@
           </form>
         </li>
         <li class="nav-item">
-            <a class="nav-link">Hallo, <?php echo $_SESSION["Vorname"]?>!</a>
+            <a class="nav-link">Hallo, <?php echo $_SESSION["usernameLoggedIn"]?>!</a>
         </li>
       </ul>
     </div>

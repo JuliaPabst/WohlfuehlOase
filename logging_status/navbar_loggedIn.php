@@ -106,7 +106,7 @@
         </li>
         <li class="nav-item dropdown">
           <button class="dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <a href="#">Hallo, <?php echo $_SESSION["Vorname"]?>!</a>
+              <a href="#">Hallo, <?php echo $_SESSION["usernameLoggedIn"]?>!</a>
           </button>
           <div class="dropdown-menu" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="/DOCUMENT_ROOT/index.php?site=profil">Profil bearbeiten</a>
