@@ -32,7 +32,7 @@
                     $_SESSION["Rolle"] = $row['Rolle'];
                     $_SESSION["Anrede"] = $row['Anrede'];
                     $_SESSION["Email"] = $row['Email'];
-                    $_SESSION["newsletter"] = $row['Newsletter'];
+                    $_SESSION["Newsletter"] = $row['Newsletter'];
                 }
                 // anmeldung klappt 
                 $stmt->close();

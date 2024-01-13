@@ -123,17 +123,17 @@
             <div>
             <input type="checkbox" name="newsletter"'; 
             // überprüfen, ob Newsletterfeld ist angeklickt
-            if($row["Newsletter"] == 1){echo "checked";}
+            if($row["Newsletter"] == 1){echo 'checked="checked"';}
             echo 'class="checkbox"/>
             <label for="newsletter">Zum Newsletter anmelden!</label>
           </div>
           <div>
             <input type="checkbox" name="aktiv"'; 
             // überprüfen, ob aktiv ist angeklickt
-            if($row["aktiv"] == "aktiv"){echo "checked";}
+            if(trim($row["aktiv"])  == "aktiv"){echo "checked='checked'";}
             echo 'class="checkbox"/>
-            <label for="aktiv">aktiv</label>
-          </div>
+            <div>
+            <div><label for="aktiv">aktiv</label></div>
         <input name="changeType" value="admin" hidden>
         <input name="currentUsername" value="'.$row["Username"].'" hidden>
         <button type="submit">Senden</button>

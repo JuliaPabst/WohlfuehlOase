@@ -110,7 +110,7 @@
       </div>
       <div>
         <input type="checkbox" name="newsletter"  
-          <?php if($_SESSION["Newsletter"]){echo "checked";}?> 
+          <?php if(isset($_SESSION["Newsletter"])){echo 'checked';}?> 
           class="checkbox"/>
         <label for="newsletter">Ich möchte mich zum Newletter anmelden!</label>
       </div>
