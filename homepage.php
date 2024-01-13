@@ -5,30 +5,30 @@
     </div>
 </section>
 
-<section id="intro">
-  <div class="container-fluid">
-    <div class="row first-row">
-      <div class="col-lg-6 px-0 column-bigscreen">
-        <img
-          src="/DOCUMENT_ROOT/pictures/wellness/GRBR_Thermal-Spa_Helenabad_von-oben_3998b7d57f5b9d921cfe1e5273bfd011.jpg"
-          alt="swimming lady"
-          class="home-side-pictures"
-        />
-      </div>
-      <div class="col-lg-6 col-sm-12 text-feld">
-        <p>
-          Genießen Sie Ihren Urlaub in einem der luxuriösesten Wellness Hotels
-          Österreichs. Mitten in Wien können Sie bei uns Kultur und Körpergefühl kombinieren.
-        </p>
-      </div>
-      <div class="col-sm-12 col-lg-7 px-0 column-phone-display">
-        <img
-          src="/DOCUMENT_ROOT/pictures/wellness/GRBR_Thermal-Spa_Helenabad_von-oben_3998b7d57f5b9d921cfe1e5273bfd011.jpg"
-          alt="swimming lady"
-          class="home-side-pictures"
-        />
-      </div>
+
+<section>
+  <div class="row first-row px-0">
+    <div class="col-lg-7 col-sm-12 px-0 column-phone">
+      <img
+        src="/DOCUMENT_ROOT/pictures/wellness/GRBR_Thermal-Spa_Helenabad_von-oben_3998b7d57f5b9d921cfe1e5273bfd0112.jpg"
+        alt="swimming lady"
+        class="home-side-pictures column-bigscreen"
+      />
     </div>
+    <div class="col-lg-5 col-sm-12 text-feld">
+      <h2>Willkommen!</h2>
+      <p>
+      Genießen Sie Ihren Urlaub in einem der luxuriösesten Wellness Hotels
+          Österreichs. 
+      </p>
+    </div>
+    <div class="col-md-8 px-0 column-phone-display">
+        <img
+          src="/DOCUMENT_ROOT/pictures/wellness/GRBR_Thermal-Spa_Helenabad_von-oben_3998b7d57f5b9d921cfe1e5273bfd0112.jpg"
+          alt="swimming lady"
+          class="home-side-pictures"
+        />
+      </div>
   </div>
 </section>
 
