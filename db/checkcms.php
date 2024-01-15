@@ -1,6 +1,19 @@
 <?php
     session_start();
 
+    require("dbaccess.php");
+    // Prepared Statement verwenden, um SQL-Injections zu vermeiden 
+    // Id vom letzten Beitrag für uniquen Namen später herausholen 
+    $sql = "SELECT id FROM news";
+    $stmt = $db_obj->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $currentId = 0;
+    while ($row = $result->fetch_assoc()) {
+        $currentId = $row["id"];
+    }
+
+
     $redirectToCMS = 0; 
 
     // Checken, ob Titel vorhanden ist
@@ -30,14 +43,6 @@
         $_SESSION["Textfeld"] = $_POST["text"];
     }
 
-    // Checken, ob Thumbnail vorhanden ist
-    if($_FILES["thumbnail"]["error"] != 0){
-        $_SESSION["thumbnailVergleich"] = 0;
-        $redirectToCMS = 1;
-    } else {
-        $_SESSION["thumbnailVergleich"] = 1;
-    }
-
     // Thumbnail abspeichern 
     if($_FILES["thumbnail"]["error"] != 0 || $_FILES["thumbnail"]["type"] != "image/jpeg"){
         $_SESSION["thumbnailVergleich"] = 0;
@@ -45,7 +50,7 @@
     } else {
         $_SESSION["thumbnailVergleich"] = 1;
         if(isset($_POST["titel"])){
-            $pictureTitle =  $pictureTitle = md5($_POST["titel"]);
+            $pictureTitle = "picture".$currentId;
             
 
             //Bildnamen definieren aus dem Titel des Artikels und .jpeg
@@ -53,6 +58,7 @@
             $_SESSION["Bild"] = $imageName;
             $urlPathClient = '/DOCUMENT_ROOT/uploads/' . $imageName;
             
+            //neuen Pfad durch getcwd(current working directory) ohne das db directory 
             $destinationServer = str_replace("db", "", getcwd() . "uploads\\" . $imageName);
             move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $destinationServer);
 
