@@ -143,12 +143,12 @@
       </div>
       <div>
         <input type="checkbox" name="newsletter" value="Newsletter" checked class="checkbox"/>
-        <label>Ich möchte mich zum Newletter anmelden!</label>
+        <label>Ich möchte mich zum Newsletter anmelden!</label>
       </div>
       <div>
         <input type="checkbox" name="AGB" value="AGB" class="checkbox" required/>
-        <label>Ich habe die
-          <a href="https://www.wko.at/branchen/tourismus-freizeitwirtschaft/hotellerie/AGBH_061115.pdf">AGB</a>
+        <label>Ich habe
+          <a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.wko.at%2Foe%2Fagb%2Fagb-hotellerie.docx&wdOrigin=BROWSELINK" target="_blank"> die AGB</a>
         gelesen!</label>
       </div>
       <button type="submit" class="submit-button">Senden</button>

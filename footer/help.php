@@ -40,50 +40,5 @@
     <p>Es gibt leider keine Klimaanlage. Wir sind in Österreich.</p>
   </div>
 </div>
-<main id="hilfe-main">
- 
-  <form>
-    <fieldset>
-      <legend>Noch Fragen?</legend>
-      <div>
-        <label for="Vorname">Vorname:</label><br />
-        <input
-          type="text"
-          name="Vorname"
-          id="Vorname"
-          placeholder="Vorname"
-          required
-        />
-      </div>
-      <div>
-        <label for="Nachname">Nachname:</label><br />
-        <input
-          type="text"
-          name="Nachname"
-          id="Nachname"
-          placeholder="Nachname"
-          required
-        />
-      </div>
-      <div>
-        <label for="E-Mail">E-Mail:</label><br />
-        <input
-          type="text"
-          name="E-Mail"
-          id="E-Mail"
-          placeholder="E-Mail"
-          required
-        />
-      </div>
-      <div>
-        <label for="Frage">Frage:</label><br />
-        <textarea name="Frage" id="Frage">Stellen Sie eine Frage!</textarea>
-      </div>
-
-      <button type="submit">Senden</button>
-      <button type="reset">Reset</button>
-    </fieldset>
-  </form>
-</main>
 
    

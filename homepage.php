@@ -38,7 +38,7 @@
       <h2>Suites</h2>
       <p>
         Egal ob in der Family Suite oder im Deluxe Verwöhn Zimmer. Bei uns
-        können finden Sie einen konfortablen Rückzugsort.
+        können finden Sie einen komfortablen Rückzugsort.
       </p>
     </div>
     <div class="col-md-12 col-lg-7 px-0">
